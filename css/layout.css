@@ -1,0 +1,106 @@
+@media only screen and (max-width: 680px) {
+  .column {
+    width: 100% !important;
+    margin-left: 0 !important;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4 {
+  line-height: 1.2;
+  margin-bottom: 1px;
+  padding: 3px 2px;
+}
+
+ul, ol {
+  margin: 0;
+}
+
+li {
+  margin: 2px 0;
+}
+
+/** For experiment: */
+/* .column {
+  margin-left: 46px;
+}
+
+.column:first-child {
+  margin-left: 0;
+} */
+
+/* On Android Firefox, emoji can't be displayed if font-size > 77px. */
+.page-icon {
+  font-size: 75px;
+  margin-top: 0.5em;
+}
+
+.page-title > h1 {
+  margin-top: 0;
+}
+
+.column {
+  padding: 12px 0;
+}
+
+.column div:first-child h1,
+.column div:first-child h2,
+.column div:first-child h3,
+.column div:first-child h4 {
+  margin-top: 1px;
+}
+
+.block {
+  border-radius: 5px;
+}
+
+.block--indent, ul, ol {
+  padding-left: 28px;
+}
+
+.block--text {
+  min-height: 30px;
+  margin: 2px auto;
+  padding: 3px 2px;
+}
+
+.block--toggle {
+  padding: 3px 0 3px 6px;
+}
+
+.block--bulleted_list {
+  padding: 2px 0;
+}
+
+.block--numbered_list {
+  padding: 3px 0;
+}
+
+.block--divider {
+  padding: 6px 0;
+  width: 100%;
+}
+
+.block--callout {
+  display: flex;
+  border-radius: 5px;
+  padding: 16px 16px 16px 12px;
+}
+
+.block--bookmark {
+  margin: 8px 0;
+}
+
+.block--bookmark img,
+.block--bookmark div {
+  margin: 0;
+}
+
+.block--video {
+  margin: 4px auto;
+  display: flex;
+  justify-content: center;
+}

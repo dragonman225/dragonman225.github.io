@@ -1,0 +1,311 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- iOS Safari -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Chrome, Firefox OS and Opera Status Bar Color -->
+  <meta name="theme-color" content="#FFFFFF">
+  <title>📝 CSS Useful Snippets</title>
+  <link rel="stylesheet" type="text/css" href="css/prism.css">
+  <link rel="stylesheet" type="text/css" href="css/layout.css">
+  <link rel="stylesheet" type="text/css" href="css/notion-color.css">
+  <link rel="stylesheet" type="text/css" href="css/theme.css">
+  <link rel="stylesheet" type="text/css" href="css/debug.css">
+  <link rel="stylesheet" type="text/css" href="css/notablog.css">
+  <style>
+    :root {
+      font-size: 16px;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="nav">
+    <a href="533db5b2-5de9-4f80-96bf-82423433a7e2.html">
+      <div class="nav-btn">About</div>
+    </a>
+    <span class="nav-breadcrumb-slash">&centerdot;</span>
+    <a href="index.html">
+      <div class="nav-btn"> Home</div>
+    </a>
+    <!-- <span class="nav-breadcrumb-slash">/</span>
+    <a href="">
+      <div class="nav-btn">📝 CSS Useful Snippets</div>
+    </a> -->
+  </nav>
+  <div class="container">
+    <div id="post-body" class="fill-h">
+      <div id="undefined" class="page-title">
+        <div class="page-icon">📝</div>
+        <h1>CSS Useful Snippets</h1>
+        <div class="block block--text meta">
+                    <div class="meta--date">
+            2019.07.25          </div>
+                              <div class="meta--tag tag-yellow">
+            css          </div>
+                    <div class="meta--tag tag-pink">
+            web          </div>
+                  </div>
+      </div>
+      <div id="">
+  <ol>
+  <li>
+  <div class="block block--numbered_list ">
+  <span>Horizontal Center Align</span>
+</div>
+  <div id="908a3f02-a14e-4ce2-b629-14ce8663a143">
+  <div class="block block--code ">
+  <pre>
+  <code>
+<span><span class="token property">margin</span><span class="token punctuation">:</span> 0 auto<span class="token punctuation">;</span></span>
+  </code>
+</pre>
+</div>
+</div>
+</li><li>
+  <div class="block block--numbered_list ">
+  <span>Vertical Center Align</span>
+</div>
+  <div id="be3e9de1-1d73-4047-94f8-3b3143533861">
+  <div class="block block--code ">
+  <pre>
+  <code>
+<span><span class="token property">top</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span><span class="token property">transform</span><span class="token punctuation">:</span>
+<span class="token function">translateY</span><span class="token punctuation">(</span>-50%<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+  </code>
+</pre>
+</div>
+</div>
+</li><li>
+  <div class="block block--numbered_list ">
+  <span>Responsive Image</span>
+</div>
+  <div id="b9c7aae9-07f5-42f6-a9e0-75a98a45014f">
+  <div class="block block--code ">
+  <pre>
+  <code>
+<span><span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span>""<span class="token punctuation">)</span></span><span class="token punctuation">;</span>
+<span class="token property">background-repeat</span><span class="token punctuation">:</span> no-repeat<span class="token punctuation">;</span>
+<span class="token property">background-size</span><span class="token punctuation">:</span> 100% 100%<span class="token punctuation">;</span>
+<span class="token property">height</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span><span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+<span class="token property">padding</span><span class="token punctuation">:</span> <span class="token function">calc</span><span class="token punctuation">(</span>100% * <span class="token punctuation">(</span>9 / 16<span class="token punctuation">)</span><span class="token punctuation">)</span> 0 0 0<span class="token punctuation">;</span></span>
+  </code>
+</pre>
+</div>
+</div>
+</li><li>
+  <div class="block block--numbered_list ">
+  <span>Fixed Control</span>
+</div>
+  <div id="4a00a6d6-96ac-41fb-a5b8-0a873305a29f">
+  <div class="block block--code ">
+  <pre>
+  <code>
+<span><span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+<span class="token property">top</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+<span class="token property">left</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+<span class="token property">z-index</span><span class="token punctuation">:</span> 1000<span class="token punctuation">;</span>
+<span class="token property">margin</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span></span>
+  </code>
+</pre>
+</div>
+</div>
+</li><li>
+  <div class="block block--numbered_list ">
+  <span>Draw Simple Shape</span>
+</div>
+  <div id="">
+  <ul>
+  <li>
+  <div class="block block--bulleted_list ">
+  <span>A square with a notch at bottom-right</span>
+</div>
+  
+</li>
+</ul>
+</div><div id="06ef8bb6-0605-4c55-9628-390c9b4efdd3">
+  <div class="block block--code ">
+  <pre>
+  <code>
+<span><span class="token property">clip-path</span><span class="token punctuation">:</span> <span class="token function">polygon</span><span class="token punctuation">(</span>0% 0%<span class="token punctuation">,</span> 0% 100%<span class="token punctuation">,</span> 77% 100%<span class="token punctuation">,</span> 100% 77%<span class="token punctuation">,</span> 100% 0%<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+  </code>
+</pre>
+</div>
+</div>
+</li><li>
+  <div class="block block--numbered_list ">
+  <span>Responsive Video</span>
+</div>
+  <div id="">
+  <ul>
+  <li>
+  <div class="block block--bulleted_list ">
+  <span><a href="https://css-tricks.com/NetMag/FluidWidthVideo/Article-FluidWidthVideo.php">Fluid Width Video</a></span>
+</div>
+  
+</li>
+</ul>
+</div><div id="59e8f2fa-93c2-487c-aeda-49e294721d1c">
+  <div class="block block--code ">
+  <pre>
+  <code>
+<span><span class="token selector">.video-wrapper</span> <span class="token punctuation">{</span>
+	<span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+	<span class="token property">padding-bottom</span><span class="token punctuation">:</span> 56.25%<span class="token punctuation">;</span> <span class="token comment">/* 16:9 -> 9/16*100% */</span>
+	<span class="token property">padding-top</span><span class="token punctuation">:</span> 25px<span class="token punctuation">;</span> <span class="token comment">/* This creates black bars at the top and the bottom of the video. */</span>
+	<span class="token property">height</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.video-wrapper iframe</span> <span class="token punctuation">{</span>
+	<span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+	<span class="token property">top</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+	<span class="token property">left</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+	<span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+	<span class="token property">height</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></span>
+  </code>
+</pre>
+</div>
+</div>
+</li><li>
+  <div class="block block--numbered_list ">
+  <span>Scale size-hard-coded complicate content</span>
+</div>
+  <div id="">
+  <ul>
+  <li>
+  <div class="block block--bulleted_list ">
+  <span><code>800</code> is the original hard-coded width</span>
+</div>
+  
+</li>
+</ul>
+</div><div id="1df3411c-4d07-41f1-8c69-e418bcebc183">
+  <div class="block block--code ">
+  <pre>
+  <code>
+<span><span class="token keyword">var</span> iOS <span class="token operator">=</span> <span class="token operator">!</span><span class="token operator">!</span>navigator<span class="token punctuation">.</span>platform <span class="token operator">&amp;&amp;</span> <span class="token regex">/iPad|iPhone|iPod/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>navigator<span class="token punctuation">.</span>platform<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">function</span> <span class="token function">scaleView</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>iOS<span class="token punctuation">)</span>
+	<span class="token keyword">var</span> w <span class="token operator">=</span> <span class="token punctuation">(</span>window<span class="token punctuation">.</span>innerWidth <span class="token operator">/</span> <span class="token number">800</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>w <span class="token operator">&lt;</span> <span class="token number">1</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>iOS<span class="token punctuation">)</span>
+		<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#content'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token string">'transform'</span><span class="token punctuation">,</span> <span class="token string">'scale('</span> <span class="token operator">+</span> w <span class="token operator">+</span> <span class="token string">')'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>iOS<span class="token punctuation">)</span>
+		document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'content'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>style<span class="token punctuation">.</span>webkitTransform <span class="token operator">=</span> <span class="token string">'scale('</span> <span class="token operator">+</span> w <span class="token operator">+</span> <span class="token string">','</span> <span class="token operator">+</span> w <span class="token operator">+</span> <span class="token string">')'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></span>
+  </code>
+</pre>
+</div>
+</div>
+</li><li>
+  <div class="block block--numbered_list ">
+  <span>Page Break</span>
+</div>
+  <div id="bbdf0059-849a-4c8a-8aea-db67f5cf9f50">
+  <div class="block block--code ">
+  <pre>
+  <code>
+<span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">page-break-after</span><span class="token punctuation">:</span> always<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></span>
+  </code>
+</pre>
+</div>
+</div><div id="4a18de7f-2965-4d95-a056-f1ec916c5ca6">
+  <div class="block block--text ">
+  <span></span>
+</div>
+</div>
+</li><li>
+  <div class="block block--numbered_list ">
+  <span>Media Query</span>
+</div>
+  <div id="">
+  <ul>
+  <li>
+  <div class="block block--bulleted_list ">
+  <span>Put <code>@media</code> after standard CSS or it won’t work.</span>
+</div>
+  
+</li>
+</ul>
+</div><div id="6e267656-9e30-4ddd-a4ec-51d6b7faa45c">
+  <div class="block block--code ">
+  <pre>
+  <code>
+<span><span class="token selector">.class</span><span class="token punctuation">{</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span>180px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token atrule"><span class="token rule">@media</span> screen and <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 350px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token selector">.class</span><span class="token punctuation">{</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span>120px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></span>
+  </code>
+</pre>
+</div>
+</div>
+</li><li>
+  <div class="block block--numbered_list ">
+  <span>Detect user agent</span>
+</div>
+  <div id="e00e4d22-cd93-4dca-8771-891b609d559a">
+  <div class="block block--code ">
+  <pre>
+  <code>
+<span><span class="token constant">KKBOX</span><span class="token punctuation">.</span>isMobile <span class="token operator">=</span> <span class="token regex">/(phon|android|iPad|iPod|opera mini|blackberry|IEMobile|nokia|motorola|sonyericsson|samsung|lg-|sie-|tablet)/i</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>navigator<span class="token punctuation">.</span>userAgent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token constant">KKBOX</span><span class="token punctuation">.</span>isTablet <span class="token operator">=</span> <span class="token regex">/(^.*android((?!Mobile).)*$|iPad|tablet)/i</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>navigator<span class="token punctuation">.</span>userAgent<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+  </code>
+</pre>
+</div>
+</div>
+</li><li>
+  <div class="block block--numbered_list ">
+  <span>Ways to style underline of <code>&lt;a&gt;</code>.</span>
+</div>
+  <div id="">
+  <ul>
+  <li>
+  <div class="block block--bulleted_list ">
+  <span>Default with <code>color: ...</code>.</span>
+</div>
+  
+</li><li>
+  <div class="block block--bulleted_list ">
+  <span>Use <code>border-bottom</code> : <code>text-decoration: none; border-bottom: ...</code></span>
+</div>
+  
+</li><li>
+  <div class="block block--bulleted_list ">
+  <span>Use <code>background</code> or <code>background-image</code> :</span>
+</div>
+  <div id="ef8ad721-5775-4f27-8d63-823132bc1a9f">
+  <div class="block block--code ">
+  <pre>
+  <code>
+<span><span class="token property">text-decoration</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+<span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">-webkit-gradient</span><span class="token punctuation">(</span>linear<span class="token punctuation">,</span>left top<span class="token punctuation">,</span>left bottom<span class="token punctuation">,</span><span class="token function">color-stop</span><span class="token punctuation">(</span>70%<span class="token punctuation">,</span>transparent<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">color-stop</span><span class="token punctuation">(</span>70%<span class="token punctuation">,</span><span class="token function">rgba</span><span class="token punctuation">(</span>101<span class="token punctuation">,</span>125<span class="token punctuation">,</span>225<span class="token punctuation">,</span>.4<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span></span>
+  </code>
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>    </div>
+    <footer>
+      <div class="site-footer">
+        <div>&copy; Alexander Wang 2019</div>
+        <div>&centerdot;</div>
+        <div>Powered by <a href="https://github.com/dragonman225/notablog" target="_blank"
+            rel="noopener noreferrer">Notablog</a>.
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+
+</html>
