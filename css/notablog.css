@@ -7,6 +7,10 @@
   flex-direction: column;
 }
 
+.page-cover {
+  top: 50px;
+}
+
 .fill-h {
   flex: 1;
 }
@@ -112,5 +116,13 @@
 
   .page-icon {
     font-size: 55px;
+  }
+
+  .page-cover {
+    top: 45px;
+  }
+
+  .page-cover > img {
+    height: calc(30vh - 20px);
   }
 }
