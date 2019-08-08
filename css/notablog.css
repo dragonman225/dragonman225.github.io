@@ -11,6 +11,11 @@
   font-size: 1.5em;
 }
 
+.inline-img-icon {
+  height: 1em;
+  vertical-align: sub;
+}
+
 .page-cover {
   top: 50px;
 }
