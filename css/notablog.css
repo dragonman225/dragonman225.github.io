@@ -7,6 +7,10 @@
   flex-direction: column;
 }
 
+.quote--big {
+  font-size: 1.5em;
+}
+
 .page-cover {
   top: 50px;
 }
