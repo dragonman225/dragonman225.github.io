@@ -21,11 +21,9 @@
 
 .meta {
   font-size: 0.9rem;
-  display: flex;
-  align-items: center;
 }
 
-.meta div:not(:first-child) {
+.meta span:not(:first-child) {
   margin-left: 10px;
 }
 
@@ -38,6 +36,7 @@
   font-size: 0.85rem;
   padding: 0 6px;
   border-radius: 3px;
+  white-space: nowrap;
 }
 
 .nav {
@@ -88,7 +87,7 @@
   color: rgba(55, 53, 47, 0.4);
 }
 
-.site-footer > div:nth-child(2) {
+.site-footer>div:nth-child(2) {
   margin: 0 3px;
 }
 
@@ -100,29 +99,23 @@
   * {
     -webkit-tap-highlight-color: transparent;
   }
-
   .container {
     padding-top: 45px;
   }
-
   .nav {
     height: 45px;
     box-shadow: rgba(15, 15, 15, 0.1) 0px 1px 0px, transparent 0px 0px 0px;
   }
-
   .nav-btn {
     font-size: 14px;
   }
-
   .page-icon {
     font-size: 55px;
   }
-
   .page-cover {
     top: 45px;
   }
-
-  .page-cover > img {
+  .page-cover>img {
     height: calc(30vh - 20px);
   }
 }
