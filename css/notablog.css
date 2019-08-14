@@ -72,6 +72,16 @@
   border-radius: 5px;
   padding: 0 6px;
   transition: background 120ms ease-in 0s;
+  /* For centering inline image */
+  display: flex;
+  align-items: center;
+}
+
+.nav-btn > span:first-child {
+  margin-right: 6px;
+}
+
+.nav-btn > span:nth-child(2) {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
