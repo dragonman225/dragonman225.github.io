@@ -80,11 +80,11 @@
   align-items: center;
 }
 
-.nav-btn>span:first-child {
-  margin-right: 6px;
+.nav-btn>span:not(:first-child) {
+  margin-left: 6px;
 }
 
-.nav-btn>span:nth-child(2) {
+.nav-btn>span {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
