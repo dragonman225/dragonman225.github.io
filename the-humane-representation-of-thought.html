@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-152513368-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-152513368-1');
+  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- iOS Safari -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Chrome, Firefox OS and Opera Status Bar Color -->
+  <meta name="theme-color" content="#FFFFFF">
+  <meta property="og:title" content="The Humane Representation of Thought">
+    <meta property="og:description" content="My notes about Bret Victor's talk "The Humane Representation of Thought".">
+    <meta property="og:type" content="blog">
+  <title>The Humane Representation of Thought</title>
+  <link rel="stylesheet" type="text/css" href="css/prism.css">
+  <link rel="stylesheet" type="text/css" href="css/SourceSansPro.css">
+  <link rel="stylesheet" type="text/css" href="css/layout.css">
+  <link rel="stylesheet" type="text/css" href="css/notion-color.css">
+  <link rel="stylesheet" type="text/css" href="css/theme.css">
+  <link rel="stylesheet" type="text/css" href="css/debug.css">
+  <link rel="stylesheet" type="text/css" href="css/notablog.css">
+  <style>
+    :root {
+      font-size: 18px;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="nav">
+    <a href="index.html">
+      <div class="nav-btn"><span><img class="inline-img-icon" src="https://notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F02d9fd71-766f-4198-9511-c3cfa0224657%2F25148955.png"></span> <span>Home</span></div>
+    </a>
+                    <span class="nav-breadcrumb-slash">&centerdot;</span>
+    <a href="library.html">
+      <div class="nav-btn"> <span>Library</span></div>
+    </a>
+                                                                                        <span class="nav-breadcrumb-slash">&centerdot;</span>
+    <a href="about.html">
+      <div class="nav-btn"> <span>About</span></div>
+    </a>
+          </nav>
+  <div class="container">
+    <article id="post-body" class="fill-h">
+            <div id="1a51b94d-cbae-4b0f-97b0-c6a85e7d2676" class="page-title page-title--nocover">
+        <div class="page-icon"><span>👥</span></div>
+        <h1>The Humane Representation of Thought</h1>
+                <div class="block block--text meta">
+                    <span class="meta--date">Posted on Sat, Nov 23, 2019</span>
+                              <span class="meta--tag tag-purple">
+            <a href="tag/HCI.html">HCI</a>
+          </span>
+                  </div>
+              </div>
+      <div id="2aef421c-70df-4115-9982-e39d6e3aa8ea">
+  <div class="block block--video ">
+  <div style="width: 1280px;">
+  <div style="position: relative; min-height: 100px; height: 0; padding-bottom: 56.25%;">
+    <iframe src="https://player.vimeo.com/video/115154289?app_id=122963" sandbox="allow-scripts allow-popups allow-forms allow-same-origin" allowfullscreen style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; border: none; border-radius: 1px; pointer-events: auto; background-color: rgb(247, 246, 245);"></iframe>
+  </div>
+</div>
+</div>
+</div><div id="ac8763e4-e78f-418b-a566-d4c72e7020a0">
+  <div class="block block--bookmark ">
+  <a href="https://vimeo.com/115154289">
+  <h5 class="title">The Humane Representation of Thought</h5>
+  <p class="description">Closing keynote at the UIST and SPLASH conferences, October 2014.</p>
+  <p class="link">https://vimeo.com/115154289</p>
+</a>
+</div>
+</div><div id="2464de27-10ff-4139-9c77-4a559e1c4f0a">
+  <div class="block block--text ">
+  <span style="white-space: pre-wrap;"></span>
+</div>
+</div><div >
+  <ul>
+  <li>
+  <div id="278fdf29-bada-4929-a1d7-46426c6bdc60">
+    <div class="block block--bulleted_list_item color-gray">
+  <span style="white-space: pre-wrap;">Images used in this note are screenshots of the video.</span>
+</div>
+  </div>
+  
+</li>
+</ul>
+</div><div id="76a9dd5a-d420-4dea-88f1-399f188d81f9">
+  <div class="block ">
+  <h2><span style="white-space: pre-wrap;">About the Speaker</span></h2>
+</div>
+</div><div id="70d1bec1-c1df-47a9-ab76-1f370b7d0f7a">
+  <div class="column_list" style="display: flex; flex-wrap: wrap;">
+  <div class="column" style=" width: calc((100% - 46px) * 0.25); word-break: break-word;">
+  <div id="45d2c9a0-2118-4e16-bd46-f36c415096ec">
+  <div class="block ">
+  <h3><span style="white-space: pre-wrap;"><em>Bret Victor</em></span></h3>
+</div>
+</div>
+</div><div class="column" style="margin-left: 46px; width: calc((100% - 46px) * 0.75); word-break: break-word;">
+  <div id="4afb3388-32ec-48f7-a774-621a570d81ae">
+  <div class="block block--text ">
+  <span style="white-space: pre-wrap;">Interface Designer, Computer Scientist, and Electrical Engineer</span>
+</div>
+</div><div id="7ba83e41-5f65-4707-b29e-69ebbfc3d1ae">
+  <div class="block block--text ">
+  <span style="white-space: pre-wrap;"><a href="http://worrydream.com/">Website</a> | <a href="https://twitter.com/worrydream">Twitter</a> | <a href="https://vimeo.com/worrydream">Vimeo</a></span>
+</div>
+</div>
+</div>
+</div>
+</div><div id="5c69d2d6-3e2a-41f7-93af-87d37b5d268f">
+  <div class="block ">
+  <h2><span style="white-space: pre-wrap;">Summary</span></h2>
+</div>
+</div><div id="b926ef1d-1425-4fac-b8f1-85d48c010906">
+  <div class="block block--text ">
+  <span style="white-space: pre-wrap;">In the talk, Bret Victor first explained why current media we have (mainly paper and computer) cannot unleash full potential of our human capabilities. Then, he showed us the possibilities of <strong>dynamic medium</strong>, which is more humane and empowering.</span>
+</div>
+</div><div id="e14953d3-8867-4359-8911-08c6663d1ede">
+  <div class="block block--text ">
+  <span style="white-space: pre-wrap;">Corresponding time of a topic or a quote in the video is annotated with <code>(time)</code>.</span>
+</div>
+</div><div id="2ddcbdc4-db27-4b06-b91b-c1825df7db62">
+  <div class="block ">
+  <h2><span style="white-space: pre-wrap;">Representations, Ascent of Humanity, and The Inhumane Medium <code>(05:04)</code></span></h2>
+</div>
+</div><div id="2ceaad7b-6ddf-42bc-88c2-821db239d954">
+  <div class="block block--quote ">
+  <blockquote>
+  <span style="white-space: pre-wrap;">A powerful medium is what enables powerful representations to be used and seen and spread. <code>(11:11)</code></span>
+</blockquote>
+</div>
+</div><div id="1729afda-f3f3-4930-9273-2bc830384ed7">
+  <div class="block block--divider ">
+  <div style="width: 100%; border: 1px solid rgba(55, 53, 47, 0.09);"></div>
+</div>
+</div><div id="a2e3ae52-9965-4252-9c0f-3d211ff0871d">
+  <div class="block block--quote ">
+  <blockquote>
+  <span style="white-space: pre-wrap;">The way representations work is they draw on certain capabilities that we have, so if we go all in a particular medium, like we did with print, the capabilities that are not well supported in that medium, umm, they get neglected, and they atrophy, and we atrophy. <code>(12:55)</code></span>
+</blockquote>
+</div>
+</div><div id="62b5fc67-e730-4381-ae88-7964e1b672d9">
+  <div class="block block--image ">
+  <div style="width: 1920px; margin: 0.5em auto; max-width: 100%;">
+  <img src="https://notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F5c5f7dff-28b7-4d1c-9286-f34a430881fb%2Fwe-atrophy.png?width=1920" data-src="https://notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F5c5f7dff-28b7-4d1c-9286-f34a430881fb%2Fwe-atrophy.png?width=1920" style="width: 100%; object-fit: cover;">
+</div>
+</div>
+</div><div id="e14c5806-c3a4-4f66-bb0a-79410664336a">
+  <div class="block block--divider ">
+  <div style="width: 100%; border: 1px solid rgba(55, 53, 47, 0.09);"></div>
+</div>
+</div><div id="3df0304f-7441-4cdd-90b6-df642c4d7324">
+  <div class="block block--quote ">
+  <blockquote>
+  <span style="white-space: pre-wrap;">Modern lifestyle of knowledge work is inhumane. <code>(14:42)</code>
+We&#x27;ve invented media that severely constrain our range of intellectual experience. <code>(16:06)</code></span>
+</blockquote>
+</div>
+</div><div id="cac37b59-2a26-44dd-846b-9e924ab4157c">
+  <div class="block ">
+  <h2><span style="white-space: pre-wrap;">The Space of Capabilities <code>(16:27)</code></span></h2>
+</div>
+</div><div id="c9e88b2b-f77f-4ed8-b5ce-c4340496c147">
+  <div class="block block--quote ">
+  <blockquote>
+  <span style="white-space: pre-wrap;">A very vast and amorphous space of modes of understanding.</span>
+</blockquote>
+</div>
+</div><div id="0551645b-83a4-4826-b847-88656d48f80b">
+  <div class="block ">
+  <h3><span style="white-space: pre-wrap;"><strong>Multiple Frameworks </strong><strong><code>(16:43)</code></strong></span></h3>
+</div>
+</div><div id="1544d74d-9153-4720-8189-d68c6fb47940">
+  <div class="column_list" style="display: flex; flex-wrap: wrap;">
+  <div class="column" style=" width: calc((100% - 46px) * 0.5); word-break: break-word;">
+  <div id="0e676292-cc27-4b92-b15c-c60539bfccfa">
+  <div class="block ">
+  <h4><span style="white-space: pre-wrap;">Bret Victor</span></h4>
+</div>
+</div><div id="c58fa6fa-e0f3-4b80-b81c-460f45d8b390">
+  <div class="block block--text ">
+  <span style="white-space: pre-wrap;">Visual, Aural, Tactile, Kinesthetic, Spatial.</span>
+</div>
+</div>
+</div><div class="column" style="margin-left: 46px; width: calc((100% - 46px) * 0.5); word-break: break-word;">
+  <div id="7f045063-47e9-425b-bd69-e4444cf23f58">
+  <div class="block ">
+  <h4><span style="white-space: pre-wrap;">Jerome Bruner</span></h4>
+</div>
+</div><div id="f4b90304-b4f0-40d5-844f-e657abe5d7f5">
+  <div class="block block--text ">
+  <span style="white-space: pre-wrap;">Enactive, Iconic, Symbolic.</span>
+</div>
+</div>
+</div>
+</div>
+</div><div id="b57b8b68-5c15-4a67-964e-fbc892e7c970">
+  <div class="column_list" style="display: flex; flex-wrap: wrap;">
+  <div class="column" style=" width: calc((100% - 46px) * 0.5); word-break: break-word;">
+  <div id="ca59de9b-40ca-4596-b2ab-e17430ae405b">
+  <div class="block ">
+  <h4><span style="white-space: pre-wrap;">Howard Gardner</span></h4>
+</div>
+</div><div id="df3274dd-d182-4113-8ea0-d109a4cb245d">
+  <div class="block block--text ">
+  <span style="white-space: pre-wrap;">Visual, Verbal, Logical, Musical, Bodily, Inter-personal, Intra-personal, Natural.</span>
+</div>
+</div>
+</div><div class="column" style="margin-left: 46px; width: calc((100% - 46px) * 0.5); word-break: break-word;">
+  <div id="7a52a64d-46f5-4688-897c-bed83c9d68db">
+  <div class="block ">
+  <h4><span style="white-space: pre-wrap;">Kieran Egan</span></h4>
+</div>
+</div><div id="4a082979-2183-41bd-88ec-3dbe7c04735a">
+  <div class="block block--text ">
+  <span style="white-space: pre-wrap;">Somatic, Mythic, Romantic, Philosophic, Ironic.</span>
+</div>
+</div>
+</div>
+</div>
+</div><div id="5b53423f-ea73-4dda-98cf-a9dfe1c741c9">
+  <div class="block ">
+  <h3><span style="white-space: pre-wrap;"><strong>About Paper and Computer </strong><strong><code>(21:03)</code></strong></span></h3>
+</div>
+</div><div id="e8c9fe1d-bc79-4bfd-9dab-97724c9a989d">
+  <div class="block block--text ">
+  <span style="white-space: pre-wrap;">Paper, or printed materials, and computer are primarily visual and symbolic. While printed materials such as papers and books offer tactile reponse since they&#x27;re physical objects, spatial reponse in terms of bookshelfs and libraries, and iconic response when we draw and write on papers, computers offers non of these responses because we can&#x27;t touch the content on the screen, we can&#x27;t explore content like we do in a spatial environment except for staring at a small screen, and we can&#x27;t draw and write smoothly with mouse and keyboard.</span>
+</div>
+</div><div id="e33db11e-23bd-4611-bc6c-e9503fe2e6a2">
+  <div class="block ">
+  <h2><span style="white-space: pre-wrap;">Dynamic Medium <code>(25:07)</code></span></h2>
+</div>
+</div><div id="c28f6d14-1032-4b44-9d51-d8417b8e6474">
+  <div class="block block--text ">
+  <span style="white-space: pre-wrap;">It has three properties :</span>
+</div>
+</div><div >
+  <ul>
+  <li>
+  <div id="136c34f6-fac9-406a-9601-286a69b6c92e">
+    <div class="block block--bulleted_list_item ">
+  <span style="white-space: pre-wrap;">Computational : Be capable of doing simulation.</span>
+</div>
+  </div>
+  
+</li><li>
+  <div id="fb352d8f-7eb5-4970-81d1-297718fcb367">
+    <div class="block block--bulleted_list_item ">
+  <span style="white-space: pre-wrap;">Responsive : Be able to interact with a person and show results in many different ways.</span>
+</div>
+  </div>
+  
+</li><li>
+  <div id="5f1fb95f-7c9f-4303-ae38-55d532f25d91">
+    <div class="block block--bulleted_list_item ">
+  <span style="white-space: pre-wrap;">Connected : Dynamic materials can exchange information and talk to each other.</span>
+</div>
+  </div>
+  
+</li>
+</ul>
+</div><div id="23fe6ce7-6862-463f-8cb6-358901f3bec1">
+  <div class="block ">
+  <h3><span style="white-space: pre-wrap;"><strong>The Possibilities of Dynamic Medium</strong></span></h3>
+</div>
+</div><div id="bf84cdfe-5f6f-404c-980a-e543c0962396">
+  <div class="block block--image ">
+  <div style="width: 1920px; margin: 0.5em auto; max-width: 100%;">
+  <img src="https://notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd3eac156-0820-4541-90e2-0d30026b586d%2Fall-dynamic-media.png?width=1920" data-src="https://notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd3eac156-0820-4541-90e2-0d30026b586d%2Fall-dynamic-media.png?width=1920" style="width: 100%; object-fit: cover;">
+</div>
+</div>
+</div><div id="0db471d4-83c6-4584-bf25-ef21995e6447">
+  <div class="block ">
+  <h4><span style="white-space: pre-wrap;">Conversing (32:10)</span></h4>
+</div>
+</div><div >
+  <ul>
+  <li>
+  <div id="25b7fdeb-c57e-4346-88da-2acbb5926e8a">
+    <div class="block block--bulleted_list_item ">
+  <span style="white-space: pre-wrap;">Dynamic Conversation</span>
+</div>
+  </div>
+  <div id="08ed3f4f-79b5-43b2-9eb9-b6901dafed50">
+  <div class="block block--text ">
+  <span style="white-space: pre-wrap;">In a conversation, one can show models of systems in real-time to help expressing ideas.</span>
+</div>
+</div><div id="6f42c615-f5ad-423d-be48-718336b1e8e0">
+  <div class="block block--image ">
+  <div style="width: 1920px; margin: 0.5em auto; max-width: 100%;">
+  <img src="https://notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F12b6273c-41f0-40f4-a878-021e8f5a28cd%2Fdynamic-conversation.png?width=1920" data-src="https://notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F12b6273c-41f0-40f4-a878-021e8f5a28cd%2Fdynamic-conversation.png?width=1920" style="width: 100%; object-fit: cover;">
+</div>
+</div>
+</div>
+</li>
+</ul>
+</div><div id="43a365ab-67fb-423d-9e34-4fde1dee57ec">
+  <div class="block ">
+  <h4><span style="white-space: pre-wrap;">Presenting (37:20)</span></h4>
+</div>
+</div><div >
+  <ul>
+  <li>
+  <div id="c737d7bf-ab21-4cb3-8930-740d5da2dd56">
+    <div class="block block--bulleted_list_item ">
+  <span style="white-space: pre-wrap;">Dynamic Presentation</span>
+</div>
+  </div>
+  <div id="e0b6211b-abe2-4fac-b30e-1067a3b36452">
+  <div class="block block--image ">
+  <div style="width: 1920px; margin: 0.5em auto; max-width: 100%;">
+  <img src="https://notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fb14a8d99-587a-4b6b-8555-ccf146777e61%2Fdynamic-presentation.png?width=1920" data-src="https://notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fb14a8d99-587a-4b6b-8555-ccf146777e61%2Fdynamic-presentation.png?width=1920" style="width: 100%; object-fit: cover;">
+</div>
+</div>
+</div>
+</li><li>
+  <div id="44082750-a87c-4063-9c26-5e4ceffafc6d">
+    <div class="block block--bulleted_list_item ">
+  <span style="white-space: pre-wrap;">Dynamic Stage</span>
+</div>
+  </div>
+  <div id="01a60188-6496-4298-9dea-6ac31a3f39ee">
+  <div class="block block--image ">
+  <div style="width: 1920px; margin: 0.5em auto; max-width: 100%;">
+  <img src="https://notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fecc0b99e-d325-482a-9306-950a24180d87%2Fdynamic-stage.png?width=1920" data-src="https://notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fecc0b99e-d325-482a-9306-950a24180d87%2Fdynamic-stage.png?width=1920" style="width: 100%; object-fit: cover;">
+</div>
+</div>
+</div>
+</li>
+</ul>
+</div><div id="a059e2ab-76d9-4348-8dd1-c19f575f0309">
+  <div class="block ">
+  <h4><span style="white-space: pre-wrap;">Reading (40:45)</span></h4>
+</div>
+</div><div >
+  <ul>
+  <li>
+  <div id="74d05c97-40a8-4c59-81c7-b23066b85a14">
+    <div class="block block--bulleted_list_item ">
+  <span style="white-space: pre-wrap;">Dynamic Reading (41:24)</span>
+</div>
+  </div>
+  <div id="602b10c8-e67e-432b-91f4-b214eb33c677">
+  <div class="block block--text ">
+  <span style="white-space: pre-wrap;">Content should be <strong>context-sensitive</strong>, that is, what I read and what you read are not necessarily the same thing, because we may want to get different things from the material.</span>
+</div>
+</div><div id="07e997d0-09ca-4d10-bc6a-bd3c22d76d4c">
+  <div class="block block--text ">
+  <span style="white-space: pre-wrap;">Also, content can be <strong>explorable models</strong>, which means the author is sending out a working thing that the reader can explore, instead of a big pile of words.</span>
+</div>
+</div><div id="7a69c7b4-01c9-4e83-b1a1-f80a21dc494e">
+  <div class="block block--image ">
+  <div style="width: 1920px; margin: 0.5em auto; max-width: 100%;">
+  <img src="https://notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fce25ac9e-740c-43d8-9f0b-6dab0babe7dc%2Fdynamic-reading.png?width=1920" data-src="https://notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fce25ac9e-740c-43d8-9f0b-6dab0babe7dc%2Fdynamic-reading.png?width=1920" style="width: 100%; object-fit: cover;">
+</div>
+</div>
+</div>
+</li><li>
+  <div id="2203596b-8a1f-486b-8fc3-a11f0016858f">
+    <div class="block block--bulleted_list_item ">
+  <span style="white-space: pre-wrap;">Dynamic Spatial Media (43:22)</span>
+</div>
+  </div>
+  <div id="be9dbf28-a613-4c1a-8dda-1c045a1b500c">
+  <div class="block block--text ">
+  <span style="white-space: pre-wrap;">We can explore and learn things in a spatial environment with all our capabilities.</span>
+</div>
+</div><div id="94bcbe0f-3aa7-4eaf-8678-07f20be14f56">
+  <div class="block block--image ">
+  <div style="width: 1920px; margin: 0.5em auto; max-width: 100%;">
+  <img src="https://notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F4aaf3d02-1bd1-4237-bb42-9d57f3438f05%2Fdynamic-spatial-media.png?width=1920" data-src="https://notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F4aaf3d02-1bd1-4237-bb42-9d57f3438f05%2Fdynamic-spatial-media.png?width=1920" style="width: 100%; object-fit: cover;">
+</div>
+</div>
+</div>
+</li>
+</ul>
+</div><div id="4dd9eab4-1ae3-4d09-8a8a-9bb70607d767">
+  <div class="block ">
+  <h4><span style="white-space: pre-wrap;">Browsing, Discovering, Connecting (44:50)</span></h4>
+</div>
+</div><div >
+  <ul>
+  <li>
+  <div id="a0ba1f41-7441-4f93-8a27-2fa3e6aeefa8">
+    <div class="block block--bulleted_list_item ">
+  <span style="white-space: pre-wrap;">Dynamic Library</span>
+</div>
+  </div>
+  <div id="905025a0-6e6a-4ff0-a81c-4e00c489099c">
+  <div class="block block--image ">
+  <div style="width: 1920px; margin: 0.5em auto; max-width: 100%;">
+  <img src="https://notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc6bfe37f-3350-4b83-99ce-15243f718ba4%2Fdynamic-library.png?width=1920" data-src="https://notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc6bfe37f-3350-4b83-99ce-15243f718ba4%2Fdynamic-library.png?width=1920" style="width: 100%; object-fit: cover;">
+</div>
+</div>
+</div>
+</li>
+</ul>
+</div><div id="819ce999-5579-4b45-aa73-3810ea6b3c2d">
+  <div class="block ">
+  <h4><span style="white-space: pre-wrap;">Writing (45:55)</span></h4>
+</div>
+</div><div >
+  <ul>
+  <li>
+  <div id="69980650-ad0a-47b4-a1a7-0b63e8224fe5">
+    <div class="block block--bulleted_list_item ">
+  <span style="white-space: pre-wrap;">Dynamic Authoring</span>
+</div>
+  </div>
+  <div id="4a0b95b1-7544-4001-b89a-4c4d8f1be27b">
+  <div class="block block--text ">
+  <span style="white-space: pre-wrap;">The author need to be able to directly manipulate the content.</span>
+</div>
+</div><div id="072af7e9-5c98-45bd-9aba-0ac05144ec1a">
+  <div class="block block--image ">
+  <div style="width: 1920px; margin: 0.5em auto; max-width: 100%;">
+  <img src="https://notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F914f3d90-d5d5-47d9-94f8-0f70aa33e45c%2Fdynamic-authoring.png?width=1920" data-src="https://notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F914f3d90-d5d5-47d9-94f8-0f70aa33e45c%2Fdynamic-authoring.png?width=1920" style="width: 100%; object-fit: cover;">
+</div>
+</div>
+</div>
+</li>
+</ul>
+</div><div id="c083aafd-66a0-4ffb-804b-45f8db94b2c6">
+  <div class="block ">
+  <h4><span style="white-space: pre-wrap;">Creating new knowledge (49:12)</span></h4>
+</div>
+</div><div >
+  <ul>
+  <li>
+  <div id="e2a86a8f-ea41-4b24-b41d-d87ab24da60f">
+    <div class="block block--bulleted_list_item ">
+  <span style="white-space: pre-wrap;">Dynamic Objects-To-Think-With</span>
+</div>
+  </div>
+  <div id="69890a2b-e2f7-46cf-b018-1e7e019bfd92">
+  <div class="block block--image ">
+  <div style="width: 1920px; margin: 0.5em auto; max-width: 100%;">
+  <img src="https://notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fec4a5ba8-fe8d-403c-a5cb-ad36b03161ab%2Fdynamic-objects-to-think-with.png?width=1920" data-src="https://notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fec4a5ba8-fe8d-403c-a5cb-ad36b03161ab%2Fdynamic-objects-to-think-with.png?width=1920" style="width: 100%; object-fit: cover;">
+</div>
+</div>
+</div>
+</li><li>
+  <div id="783b4339-ec46-49ad-ab90-60afcc575535">
+    <div class="block block--bulleted_list_item ">
+  <span style="white-space: pre-wrap;">Dynamic Environments-To-Think-In</span>
+</div>
+  </div>
+  <div id="a48f8256-4155-439b-b95f-60946e323fd5">
+  <div class="block block--image ">
+  <div style="width: 1920px; margin: 0.5em auto; max-width: 100%;">
+  <img src="https://notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F22b6ea40-a3ed-4543-939c-fb44576f83ff%2Fdynamic-environments-to-think-in.png?width=1920" data-src="https://notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F22b6ea40-a3ed-4543-939c-fb44576f83ff%2Fdynamic-environments-to-think-in.png?width=1920" style="width: 100%; object-fit: cover;">
+</div>
+</div>
+</div>
+</li>
+</ul>
+</div>    </article>
+    <footer>
+      <div class="site-footer">
+        <div>&copy; Alexander's Note 2019</div>
+        <div>&centerdot;</div>
+        <div>Powered by <a href="https://github.com/dragonman225/notablog" target="_blank"
+            rel="noopener noreferrer">Notablog</a>.
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+
+</html>
