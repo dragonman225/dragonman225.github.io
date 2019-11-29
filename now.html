@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-152513368-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-152513368-1');
+  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- iOS Safari -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Chrome, Firefox OS and Opera Status Bar Color -->
+  <meta name="theme-color" content="#FFFFFF">
+  <meta property="og:title" content="Now">
+    <meta property="og:type" content="blog">
+  <title>Now</title>
+  <link rel="stylesheet" type="text/css" href="css/prism.css">
+  <link rel="stylesheet" type="text/css" href="css/SourceSansPro.css">
+  <link rel="stylesheet" type="text/css" href="css/layout.css">
+  <link rel="stylesheet" type="text/css" href="css/notion-color.css">
+  <link rel="stylesheet" type="text/css" href="css/theme.css">
+  <link rel="stylesheet" type="text/css" href="css/debug.css">
+  <link rel="stylesheet" type="text/css" href="css/notablog.css">
+  <style>
+    :root {
+      font-size: 18px;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="nav">
+    <a href="index.html">
+      <div class="nav-btn"><span><img class="inline-img-icon" src="https://notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F02d9fd71-766f-4198-9511-c3cfa0224657%2F25148955.png"></span> <span>Home</span></div>
+    </a>
+                                                                            <span class="nav-breadcrumb-slash">&centerdot;</span>
+    <a href="now.html">
+      <div class="nav-btn"> <span>Now</span></div>
+    </a>
+                <span class="nav-breadcrumb-slash">&centerdot;</span>
+    <a href="library.html">
+      <div class="nav-btn"> <span>Library</span></div>
+    </a>
+                <span class="nav-breadcrumb-slash">&centerdot;</span>
+    <a href="about.html">
+      <div class="nav-btn"> <span>About</span></div>
+    </a>
+                          </nav>
+  <div class="container">
+    <article id="post-body" class="fill-h">
+            <div id="137a7f9b-dc02-4e7d-b2a2-e08a7b628987" class="page-title page-title--nocover">
+        <div class="page-icon"></div>
+        <h1>Now</h1>
+              </div>
+      <div id="4902ec31-727e-422d-87f7-9a6822b8e9be">
+  <div class="block ">
+  <h2><span style="white-space: pre-wrap;">What I&#x27;m doing now</span></h2>
+</div>
+</div><div id="05e11b07-2319-4c00-ad3e-35f37ac7b692">
+  <div class="block block--text color-gray">
+  <span style="white-space: pre-wrap;">Last updated : 2019&#x2F;11&#x2F;29</span>
+</div>
+</div><div id="02d1150c-5893-487a-8cef-c4ab925a94cb">
+  <div class="block ">
+  <h3><span style="white-space: pre-wrap;">Refactoring my Notion-related code projects</span></h3>
+</div>
+</div><div id="ee6fad47-85d9-4726-9849-59b952bf084c">
+  <div class="block block--text ">
+  <span style="white-space: pre-wrap;">Namely <code><a href="https://github.com/dragonman225/notionapi-agent">notionapi-agent</a></code>, <code><a href="https://github.com/dragonman225/nast-util-from-notionapi">nast-util-from-notionapi</a></code>, <code><a href="https://github.com/dragonman225/nast-util-to-html">nast-util-to-html</a></code>, <code><a href="https://github.com/dragonman225/notablog">notablog</a></code>. The first three are Node.js modules, and the last one is a command-line application. You can find their source code on <a href="https://github.com/dragonman225">Github</a>.</span>
+</div>
+</div><div id="ede00e96-e8b7-435d-942d-56ddbb55f93d">
+  <div class="block block--text ">
+  <span style="white-space: pre-wrap;">As feature patches pile up, the code start to become dirty.</span>
+</div>
+</div><div id="96eac17a-1557-48b0-9a99-84312b7c7c9e">
+  <div class="block block--text ">
+  <span style="white-space: pre-wrap;">As I dig deeper into Notion&#x27;s API and come up with more application ideas, the data structure I invented naively become incomplete, and the architecture of the modules become inflexible.</span>
+</div>
+</div><div id="5b7f4e43-0c2c-44a8-a7f5-c069b4f4f7b6">
+  <div class="block block--text ">
+  <span style="white-space: pre-wrap;">Also, the projects get code quality<span class="color-yellow"> </span><strong><span class="color-yellow">C </span></strong>on <a href="https://codeclimate.com/">CodeClimate</a>, and I feel unhappy 🙁.</span>
+</div>
+</div><div id="256ee1b2-dd06-410b-9b63-5b06957a56dc">
+  <div class="block block--text ">
+  <span style="white-space: pre-wrap;">Therefore, I think it&#x27;s time to refactor them (actually, again).</span>
+</div>
+</div><div id="0475e3f6-71cb-4506-af51-243dd4930422">
+  <details>
+  <summary class="block block--toggle ">
+  <span style="white-space: pre-wrap;"><strong>Just for context : Why I created the projects ?</strong></span>
+</summary>
+  <div class="block--indent">
+    <div id="34cb6b9f-82c7-4975-9c95-f4de25e68c4e">
+  <div class="block block--text ">
+  <span style="white-space: pre-wrap;"><a href="https://www.notion.so/">Notion</a> is a convenient tool to write rich-text documents and build visual databases. Sadly, it&#x27;s a SaaS product, which means my data stores in the cloud instead of my own computer, and the data can only be accessed through Notion&#x27;s proprietary API with their web app. Knowing that web services may get shut down, or pricing may change to my disadvantage, or just there&#x27;re other better apps I&#x27;d like to switch to, I want to <strong>own my data</strong>, in the way I can read, write, transform, and distribute them whenever I want. So, I started the projects.</span>
+</div>
+</div><div id="ffb0e911-00c8-4420-a450-23bae5d9fbe1">
+  <div class="block block--text ">
+  <span style="white-space: pre-wrap;">At the beginning, all my efforts went to <em>1. designing a data structure that can preserve all information of a Notion page</em> and <em>2. writing a program to download a Notion page and save it in the format I designed in 1</em>. The result was the birth of <code><a href="https://github.com/dragonman225/notionapi-agent">notionapi-agent</a></code> and <code><a href="https://github.com/dragonman225/nast-util-from-notionapi">nast-util-from-notionapi</a></code>. Then, <code><a href="https://github.com/dragonman225/nast-util-to-html">nast-util-to-html</a></code> was written to render those downloaded Notion pages to HTML, so I can view them offline or host them on a server.</span>
+</div>
+</div><div id="baacce52-8a5c-4120-a02c-3f52d8487b62">
+  <div class="block block--text ">
+  <span style="white-space: pre-wrap;">More later, using above three modules as foundation, <code><a href="https://github.com/dragonman225/notablog">notablog</a></code> made its debut. It is a static site generator, responsible for transforming articles written on Notion into this site you are viewing now.</span>
+</div>
+</div>
+  </div>
+</details>
+</div><div id="edd1d87e-6ff0-4bb8-b079-67b72631e7b2">
+  <div class="block ">
+  <h3><span style="white-space: pre-wrap;">Learning time management</span></h3>
+</div>
+</div><div id="6e78ff43-18a1-4611-8821-be2c9f5eca12">
+  <div class="block block--text ">
+  <span style="white-space: pre-wrap;">Primarily David Allen&#x27;s <em>Getting Things Done®</em> method.</span>
+</div>
+</div><div id="a23190fe-d76a-4b92-9c86-35aa6601d3ae">
+  <div class="block ">
+  <h3><span style="white-space: pre-wrap;">Studying</span></h3>
+</div>
+</div><div id="5470abea-4d12-4077-af31-f93c3235f7f8">
+  <div class="block block--text ">
+  <span style="white-space: pre-wrap;">I&#x27;m an university student, so this is what I inevitably have to do every day. For details, I&#x27;m interested in data structure and algorithm, while having a hard time understanding differential equations.</span>
+</div>
+</div><div id="6d3470f0-91a4-47f1-b2ea-d2f1b81d2766">
+  <div class="block block--text ">
+  <span style="white-space: pre-wrap;"></span>
+</div>
+</div><div id="8809d49f-3a56-42a9-8839-1e6c8fa762b3">
+  <div class="block block--divider ">
+  <div style="width: 100%; border: 1px solid rgba(55, 53, 47, 0.09);"></div>
+</div>
+</div><div id="6c457496-a884-4845-ac31-c9ec213bb7a1">
+  <div class="block block--text ">
+  <span style="white-space: pre-wrap;"><em>Idea for the </em><em><a href="https://nownownow.com/about">now page</a></em><em> is inspired by </em><em><a href="https://sivers.org/now">Derek Sivers</a></em><em>.</em></span>
+</div>
+</div><div id="94407607-853b-453c-a353-ba4c589ecfeb">
+  <div class="block block--text ">
+  <span style="white-space: pre-wrap;"></span>
+</div>
+</div>    </article>
+    <footer>
+      <div class="site-footer">
+        <div>&copy; Alexander's Note 2019</div>
+        <div>&centerdot;</div>
+        <div>Powered by <a href="https://github.com/dragonman225/notablog" target="_blank"
+            rel="noopener noreferrer">Notablog</a>.
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+
+</html>
