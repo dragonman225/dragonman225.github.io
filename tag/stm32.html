@@ -18,17 +18,17 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <!-- Chrome, Firefox OS and Opera Status Bar Color -->
   <meta name="theme-color" content="#FFFFFF">
-  <meta property="og:title" content="#stm32 in Alexander's Note">
-  <meta property="og:description" content="All posts about #stm32">
+  <meta property="og:title" content="#stm32 — Alexander's Note">
+  <meta name="description" content="All posts tagged with stm32">
+  <meta property="og:description" content="All posts tagged with stm32">
   <meta property="og:type" content="blog">
-  <title>#stm32 in Alexander's Note</title>
+  <title>#stm32 — Alexander's Note</title>
   <base href="../">
-  <link rel="stylesheet" type="text/css" href="css/prism.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css">
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism.min.css">
   <link rel="stylesheet" type="text/css" href="css/SourceSansPro.css">
-  <link rel="stylesheet" type="text/css" href="css/layout.css">
-  <link rel="stylesheet" type="text/css" href="css/notion-color.css">
   <link rel="stylesheet" type="text/css" href="css/theme.css">
-  <link rel="stylesheet" type="text/css" href="css/debug.css">
   <link rel="stylesheet" type="text/css" href="css/notablog.css">
   <style>
     :root {
@@ -38,65 +38,56 @@
 </head>
 
 <body>
-  <nav class="nav">
+  <nav class="Navbar">
     <a href="index.html">
-      <div class="nav-btn"><span><img class="inline-img-icon" src="https://notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F02d9fd71-766f-4198-9511-c3cfa0224657%2F25148955.png"></span> <span>Home</span></div>
+      <div class="Navbar__Btn"><span><img class="inline-img-icon" src="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F02d9fd71-766f-4198-9511-c3cfa0224657%2F25148955.png"></span> <span>Home</span></div>
     </a>
-                                                                            <span class="nav-breadcrumb-slash">&centerdot;</span>
+                                                                            <span class="Navbar__Delim">&centerdot;</span>
     <a href="now.html">
-      <div class="nav-btn"><span>🎯</span> <span>Now</span></div>
+      <div class="Navbar__Btn"><span>🎯</span> <span>Now</span></div>
     </a>
-                <span class="nav-breadcrumb-slash">&centerdot;</span>
+                <span class="Navbar__Delim">&centerdot;</span>
     <a href="library.html">
-      <div class="nav-btn"><span>📔</span> <span>Library</span></div>
+      <div class="Navbar__Btn"><span>📔</span> <span>Library</span></div>
     </a>
-                <span class="nav-breadcrumb-slash">&centerdot;</span>
+                <span class="Navbar__Delim">&centerdot;</span>
     <a href="about.html">
-      <div class="nav-btn"><span>🏅</span> <span>About</span></div>
+      <div class="Navbar__Btn"><span>🏅</span> <span>About</span></div>
     </a>
-                          </nav>
-  <div class="container">
-    <!-- Tag header -->
-    <div class="tag-header">
-      <h1>#stm32</h1>
+                                          </nav>
+  <header class="Header">
+    <div class="Header__Spacer--NoCover"></div>
+    <h1 class="Header__Title">#stm32</h1>
+  </header>
+  <article class="ArticleList">
+            <article class="Article">
+      <h3 class="Article__Title">
+        <span>🛠</span>        <a href="practical-stm32-part1.html">
+          Practical STM32 (1) - The Very Beginning        </a>
+      </h3>
+            <p class="Article__Desc">
+        <span class="SemanticStringArray"><span class="SemanticString">I got a </span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://www.st.com/en/evaluation-tools/32f469idiscovery.html"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">STM32F469I-DISCO</strong></a></span><span class="SemanticString"> development board to play with recently, here are some notes about how I began.</span></span>      </p>
+            <div class="DateTagBar">
+                <span class="DateTagBar__Date">Posted on Wed, Oct 2, 2019</span>
+                        <span class="DateTagBar__Tag DateTagBar__Tag--yellow">
+          <a href="tag/stm32.html">stm32</a>
+        </span>
+                <span class="DateTagBar__Tag DateTagBar__Tag--blue">
+          <a href="tag/embedded.html">embedded</a>
+        </span>
+                <span class="DateTagBar__Tag DateTagBar__Tag--red">
+          <a href="tag/electronics.html">electronics</a>
+        </span>
+              </div>
+    </article>
+          </article>
+  <footer class="Footer">
+    <div>&copy; Alexander's Note 2019</div>
+    <div>&centerdot;</div>
+    <div>Powered by <a href="https://github.com/dragonman225/notablog" target="_blank"
+        rel="noopener noreferrer">Notablog</a>.
     </div>
-    <!-- PageMetas -->
-    <div class="fill-h">
-                  <article class="post-brief">
-        
-          <h3>
-            <span>🛠</span>            <a href="practical-stm32-part1.html" class="post-brief--title">
-              Practical STM32 (1) - The Very Beginning            </a>
-          </h3>
-        
-        <p class="block block--text">
-          <span style="white-space: pre-wrap;">I got a <strong><a href="https://www.st.com/en/evaluation-tools/32f469idiscovery.html">STM32F469I-DISCO</a></strong> development board to play with recently, here are some notes about how I began.</span>        </p>
-        <div class="block block--text meta">
-                    <span class="meta--date">Posted on Wed, Oct 2, 2019</span>
-                              <span class="meta--tag tag-yellow">
-            <a href="tag/stm32.html">stm32</a>
-          </span>
-                    <span class="meta--tag tag-blue">
-            <a href="tag/embedded.html">embedded</a>
-          </span>
-                    <span class="meta--tag tag-red">
-            <a href="tag/electronics.html">electronics</a>
-          </span>
-                  </div>
-      </article>
-                </div>
-    <!-- All tags -->
-    <!-- Footer -->
-    <footer>
-      <div class="site-footer">
-        <div>&copy; Alexander's Note 2019</div>
-        <div>&centerdot;</div>
-        <div>Powered by <a href="https://github.com/dragonman225/notablog" target="_blank"
-            rel="noopener noreferrer">Notablog</a>.
-        </div>
-      </div>
-    </footer>
-  </div>
+  </footer>
 </body>
 
 </html>

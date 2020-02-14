@@ -19,15 +19,15 @@
   <!-- Chrome, Firefox OS and Opera Status Bar Color -->
   <meta name="theme-color" content="#FFFFFF">
   <meta property="og:title" content="Alexander's Note">
-    <meta property="og:description" content="Bootstrap the future I envision.">
+    <meta name="description" content="Bootstrap the future I envision.">
+  <meta property="og:description" content="Bootstrap the future I envision.">
     <meta property="og:type" content="blog">
   <title>Alexander's Note</title>
-  <link rel="stylesheet" type="text/css" href="css/prism.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css">
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism.min.css">
   <link rel="stylesheet" type="text/css" href="css/SourceSansPro.css">
-  <link rel="stylesheet" type="text/css" href="css/layout.css">
-  <link rel="stylesheet" type="text/css" href="css/notion-color.css">
   <link rel="stylesheet" type="text/css" href="css/theme.css">
-  <link rel="stylesheet" type="text/css" href="css/debug.css">
   <link rel="stylesheet" type="text/css" href="css/notablog.css">
   <style>
     :root {
@@ -37,190 +37,172 @@
 </head>
 
 <body>
-  <nav class="nav">
+  <nav class="Navbar">
     <a href="index.html">
-      <div class="nav-btn"><span><img class="inline-img-icon" src="https://notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F02d9fd71-766f-4198-9511-c3cfa0224657%2F25148955.png"></span> <span>Home</span></div>
+      <div class="Navbar__Btn"><span><img class="inline-img-icon" src="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F02d9fd71-766f-4198-9511-c3cfa0224657%2F25148955.png"></span> <span>Home</span></div>
     </a>
-                                                                            <span class="nav-breadcrumb-slash">&centerdot;</span>
+                                                                            <span class="Navbar__Delim">&centerdot;</span>
     <a href="now.html">
-      <div class="nav-btn"><span>🎯</span> <span>Now</span></div>
+      <div class="Navbar__Btn"><span>🎯</span> <span>Now</span></div>
     </a>
-                <span class="nav-breadcrumb-slash">&centerdot;</span>
+                <span class="Navbar__Delim">&centerdot;</span>
     <a href="library.html">
-      <div class="nav-btn"><span>📔</span> <span>Library</span></div>
+      <div class="Navbar__Btn"><span>📔</span> <span>Library</span></div>
     </a>
-                <span class="nav-breadcrumb-slash">&centerdot;</span>
+                <span class="Navbar__Delim">&centerdot;</span>
     <a href="about.html">
-      <div class="nav-btn"><span>🏅</span> <span>About</span></div>
+      <div class="Navbar__Btn"><span>🏅</span> <span>About</span></div>
     </a>
-                          </nav>
-  <div class="container">
-        <div class="page-title page-title--nocover">
-      <div class="page-icon"><span><img class="inline-img-icon" src="https://notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F02d9fd71-766f-4198-9511-c3cfa0224657%2F25148955.png"></span></div>
-      <h1>Alexander's Note</h1>
+                                          </nav>
+  <header class="Header">
+        <div class="Header__Spacer Header__Spacer--NoCover">
     </div>
-        <div>
-      <span class="quote--big">&ldquo;</span>
-      <span style="white-space: pre-wrap;"><strong>Bootstrap</strong> the future I <span class="background-yellow"><em>envision</em></span>.</span>      <span class="quote--big">&bdquo;</span>
+        <div class="Header__Icon"><span><img class="inline-img-icon" src="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F02d9fd71-766f-4198-9511-c3cfa0224657%2F25148955.png"></span></div>
+        <h1 class="Header__Title">Alexander's Note</h1>
+        <div class="Header__Desc">
+      <span class="Header__DescBigQuoteMark">&ldquo;</span>
+      <span class="SemanticStringArray"><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Bootstrap</strong></span><span class="SemanticString"> the future I </span><span class="SemanticString"><em class="SemanticString__Fragment SemanticString__Fragment--Italic"><span class="SemanticString__Fragment SemanticString__Fragment--BgYellow">envision</span></em></span><span class="SemanticString">.</span></span>      <span class="Header__DescBigQuoteMark">&bdquo;</span>
     </div>
-        <div class="fill-h">
-                  <article class="post-brief">
-        
-          <h3>
-            <span>👥</span>            <a href="the-humane-representation-of-thought.html" class="post-brief--title">
-              The Humane Representation of Thought            </a>
-          </h3>
-        
-        <p class="block block--text">
-          <span style="white-space: pre-wrap;">My notes about Bret Victor&#x27;s talk &quot;The Humane Representation of Thought&quot;.</span>        </p>
-        <div class="block block--text meta">
-                    <span class="meta--date">Posted on Sat, Nov 23, 2019</span>
-                              <span class="meta--tag tag-purple">
-            <a href="tag/HCI.html">HCI</a>
-          </span>
-                  </div>
-      </article>
-                        <article class="post-brief">
-        
-          <h3>
-            <span>🔉</span>            <a href="audio-dac-comparison.html" class="post-brief--title">
-              Audio DAC Comparison            </a>
-          </h3>
-        
-        <p class="block block--text">
-          <span style="white-space: pre-wrap;">A table to collect technical information about <span class="background-yellow">HiFi</span> (mostly) <span class="background-yellow">audio DAC</span>s I discovered during the past two years.</span>        </p>
-        <div class="block block--text meta">
-                    <span class="meta--date">Posted on Wed, Oct 23, 2019</span>
-                              <span class="meta--tag tag-red">
-            <a href="tag/electronics.html">electronics</a>
-          </span>
-                  </div>
-      </article>
-                        <article class="post-brief">
-        
-          <h3>
-            <span>🛠</span>            <a href="practical-stm32-part1.html" class="post-brief--title">
-              Practical STM32 (1) - The Very Beginning            </a>
-          </h3>
-        
-        <p class="block block--text">
-          <span style="white-space: pre-wrap;">I got a <strong><a href="https://www.st.com/en/evaluation-tools/32f469idiscovery.html">STM32F469I-DISCO</a></strong> development board to play with recently, here are some notes about how I began.</span>        </p>
-        <div class="block block--text meta">
-                    <span class="meta--date">Posted on Wed, Oct 2, 2019</span>
-                              <span class="meta--tag tag-yellow">
-            <a href="tag/stm32.html">stm32</a>
-          </span>
-                    <span class="meta--tag tag-blue">
-            <a href="tag/embedded.html">embedded</a>
-          </span>
-                    <span class="meta--tag tag-red">
-            <a href="tag/electronics.html">electronics</a>
-          </span>
-                  </div>
-      </article>
-                        <article class="post-brief">
-        
-          <h3>
-            <span><img class="inline-img-icon" src="https://notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc5a88411-c761-4386-8283-0bb41dc70361%2Fimage01.png"></span>            <a href="notion-resource.html" class="post-brief--title">
-              Notion.so Resource            </a>
-          </h3>
-        
-        <p class="block block--text">
-          <span style="white-space: pre-wrap;">Here are some <span class="background-pink">Notion-related resource</span> from enthusiastic people. There may be more, I will add once I discover !</span>        </p>
-        <div class="block block--text meta">
-                    <span class="meta--date">Posted on Fri, Aug 9, 2019</span>
-                              <span class="meta--tag tag-red">
-            <a href="tag/web.html">web</a>
-          </span>
-                    <span class="meta--tag tag-orange">
-            <a href="tag/Notion.html">Notion</a>
-          </span>
-                  </div>
-      </article>
-                        <article class="post-brief">
-        
-          <h3>
-            <span>✏️</span>            <a href="cool-blog-repo.html" class="post-brief--title">
-              Awesome Blogs            </a>
-          </h3>
-        
-        <p class="block block--text">
-          <span style="white-space: pre-wrap;">In contrast to centralized social networking sites where everyone looks the same, an <span class="background-green">elaborately designed blog</span> make one stand out and is more fun to read. 🙂</span>        </p>
-        <div class="block block--text meta">
-                    <span class="meta--date">Posted on Thu, Jul 25, 2019</span>
-                              <span class="meta--tag tag-red">
-            <a href="tag/web.html">web</a>
-          </span>
-                    <span class="meta--tag tag-green">
-            <a href="tag/blog.html">blog</a>
-          </span>
-                  </div>
-      </article>
-                        <article class="post-brief">
-        
-          <h3>
-            <span>📝</span>            <a href="css-snippets.html" class="post-brief--title">
-              CSS Useful Snippets            </a>
-          </h3>
-        
-        <p class="block block--text">
-          <span style="white-space: pre-wrap;">Also some tricky parts of CSS.</span>        </p>
-        <div class="block block--text meta">
-                    <span class="meta--date">Posted on Thu, Jul 25, 2019</span>
-                              <span class="meta--tag tag-yellow">
-            <a href="tag/css.html">css</a>
-          </span>
-                    <span class="meta--tag tag-red">
-            <a href="tag/web.html">web</a>
-          </span>
-                  </div>
-      </article>
-                        <article class="post-brief">
-        
-          <h3>
-            <span>🔥</span>            <a href="css-reference.html" class="post-brief--title">
-              The Power of CSS            </a>
-          </h3>
-        
-        <p class="block block--text">
-          <span style="white-space: pre-wrap;">My CSS reference.</span>        </p>
-        <div class="block block--text meta">
-                    <span class="meta--date">Posted on Wed, Jul 24, 2019</span>
-                              <span class="meta--tag tag-yellow">
-            <a href="tag/css.html">css</a>
-          </span>
-                    <span class="meta--tag tag-red">
-            <a href="tag/web.html">web</a>
-          </span>
-                  </div>
-      </article>
-                        <article class="post-brief">
-        
-          <h3>
-            <span>💪</span>            <a href="first-test-post.html" class="post-brief--title">
-              Finally, my blog is up.            </a>
-          </h3>
-        
-        <p class="block block--text">
-          <span style="white-space: pre-wrap;">This is a blog powered by <a href="https://github.com/dragonman225/notablog"><strong>Notablog</strong></a>, using <a href="http://notion.so">Notion.so</a> as data source.</span>        </p>
-        <div class="block block--text meta">
-                    <span class="meta--date">Posted on Wed, Jul 24, 2019</span>
-                              <span class="meta--tag tag-gray">
-            <a href="tag/announcement.html">announcement</a>
-          </span>
-                  </div>
-      </article>
-                                                                            </div>
-    <footer>
-      <div class="site-footer">
-        <div>&copy; Alexander's Note 2019</div>
-        <div>&centerdot;</div>
-        <div>Powered by <a href="https://github.com/dragonman225/notablog" target="_blank"
-            rel="noopener noreferrer">Notablog</a>.
-        </div>
-      </div>
-    </footer>
-  </div>
+      </header>
+  <article class="ArticleList">
+            <article class="Article">
+      <h3 class="Article__Title">
+        <span>👥</span>        <a href="the-humane-representation-of-thought.html">
+          The Humane Representation of Thought        </a>
+      </h3>
+            <p class="Article__Desc">
+        <span class="SemanticStringArray"><span class="SemanticString">My notes about Bret Victor&#x27;s talk &quot;The Humane Representation of Thought&quot;.</span></span>      </p>
+            <div class="DateTagBar">
+                <span class="DateTagBar__Date">Posted on Sat, Nov 23, 2019</span>
+                        <span class="DateTagBar__Tag DateTagBar__Tag--purple">
+          <a href="tag/HCI.html">HCI</a>
+        </span>
+              </div>
+    </article>
+                <article class="Article">
+      <h3 class="Article__Title">
+        <span>🔉</span>        <a href="audio-dac-comparison.html">
+          Audio DAC Comparison        </a>
+      </h3>
+            <p class="Article__Desc">
+        <span class="SemanticStringArray"><span class="SemanticString">A table to collect technical information about </span><span class="SemanticString"><span class="SemanticString__Fragment SemanticString__Fragment--BgYellow">HiFi</span></span><span class="SemanticString"> (mostly) </span><span class="SemanticString"><span class="SemanticString__Fragment SemanticString__Fragment--BgYellow">audio DAC</span></span><span class="SemanticString">s I discovered during the past two years.</span></span>      </p>
+            <div class="DateTagBar">
+                <span class="DateTagBar__Date">Posted on Wed, Oct 23, 2019</span>
+                        <span class="DateTagBar__Tag DateTagBar__Tag--red">
+          <a href="tag/electronics.html">electronics</a>
+        </span>
+              </div>
+    </article>
+                <article class="Article">
+      <h3 class="Article__Title">
+        <span>🛠</span>        <a href="practical-stm32-part1.html">
+          Practical STM32 (1) - The Very Beginning        </a>
+      </h3>
+            <p class="Article__Desc">
+        <span class="SemanticStringArray"><span class="SemanticString">I got a </span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://www.st.com/en/evaluation-tools/32f469idiscovery.html"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">STM32F469I-DISCO</strong></a></span><span class="SemanticString"> development board to play with recently, here are some notes about how I began.</span></span>      </p>
+            <div class="DateTagBar">
+                <span class="DateTagBar__Date">Posted on Wed, Oct 2, 2019</span>
+                        <span class="DateTagBar__Tag DateTagBar__Tag--yellow">
+          <a href="tag/stm32.html">stm32</a>
+        </span>
+                <span class="DateTagBar__Tag DateTagBar__Tag--blue">
+          <a href="tag/embedded.html">embedded</a>
+        </span>
+                <span class="DateTagBar__Tag DateTagBar__Tag--red">
+          <a href="tag/electronics.html">electronics</a>
+        </span>
+              </div>
+    </article>
+                <article class="Article">
+      <h3 class="Article__Title">
+        <span><img class="inline-img-icon" src="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc5a88411-c761-4386-8283-0bb41dc70361%2Fimage01.png"></span>        <a href="notion-resource.html">
+          Notion.so Resource        </a>
+      </h3>
+            <p class="Article__Desc">
+        <span class="SemanticStringArray"><span class="SemanticString">Here are some </span><span class="SemanticString"><span class="SemanticString__Fragment SemanticString__Fragment--BgPink">Notion-related resource</span></span><span class="SemanticString"> from enthusiastic people. There may be more, I will add once I discover !</span></span>      </p>
+            <div class="DateTagBar">
+                <span class="DateTagBar__Date">Posted on Fri, Aug 9, 2019</span>
+                        <span class="DateTagBar__Tag DateTagBar__Tag--red">
+          <a href="tag/web.html">web</a>
+        </span>
+                <span class="DateTagBar__Tag DateTagBar__Tag--orange">
+          <a href="tag/Notion.html">Notion</a>
+        </span>
+              </div>
+    </article>
+                <article class="Article">
+      <h3 class="Article__Title">
+        <span>✏️</span>        <a href="cool-blog-repo.html">
+          Awesome Blogs        </a>
+      </h3>
+            <p class="Article__Desc">
+        <span class="SemanticStringArray"><span class="SemanticString">In contrast to centralized social networking sites where everyone looks the same, an </span><span class="SemanticString"><span class="SemanticString__Fragment SemanticString__Fragment--BgGreen">elaborately designed blog</span></span><span class="SemanticString"> make one stand out and is more fun to read. 🙂</span></span>      </p>
+            <div class="DateTagBar">
+                <span class="DateTagBar__Date">Posted on Thu, Jul 25, 2019</span>
+                        <span class="DateTagBar__Tag DateTagBar__Tag--red">
+          <a href="tag/web.html">web</a>
+        </span>
+                <span class="DateTagBar__Tag DateTagBar__Tag--green">
+          <a href="tag/blog.html">blog</a>
+        </span>
+              </div>
+    </article>
+                <article class="Article">
+      <h3 class="Article__Title">
+        <span>📝</span>        <a href="css-snippets.html">
+          CSS Useful Snippets        </a>
+      </h3>
+            <p class="Article__Desc">
+        <span class="SemanticStringArray"><span class="SemanticString">Also some tricky parts of CSS.</span></span>      </p>
+            <div class="DateTagBar">
+                <span class="DateTagBar__Date">Posted on Thu, Jul 25, 2019</span>
+                        <span class="DateTagBar__Tag DateTagBar__Tag--yellow">
+          <a href="tag/css.html">css</a>
+        </span>
+                <span class="DateTagBar__Tag DateTagBar__Tag--red">
+          <a href="tag/web.html">web</a>
+        </span>
+              </div>
+    </article>
+                <article class="Article">
+      <h3 class="Article__Title">
+        <span>🔥</span>        <a href="css-reference.html">
+          The Power of CSS        </a>
+      </h3>
+            <p class="Article__Desc">
+        <span class="SemanticStringArray"><span class="SemanticString">My CSS reference.</span></span>      </p>
+            <div class="DateTagBar">
+                <span class="DateTagBar__Date">Posted on Wed, Jul 24, 2019</span>
+                        <span class="DateTagBar__Tag DateTagBar__Tag--yellow">
+          <a href="tag/css.html">css</a>
+        </span>
+                <span class="DateTagBar__Tag DateTagBar__Tag--red">
+          <a href="tag/web.html">web</a>
+        </span>
+              </div>
+    </article>
+                <article class="Article">
+      <h3 class="Article__Title">
+        <span>💪</span>        <a href="first-test-post.html">
+          Finally, my blog is up.        </a>
+      </h3>
+            <p class="Article__Desc">
+        <span class="SemanticStringArray"><span class="SemanticString">This is a blog powered by </span><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://github.com/dragonman225/notablog">Notablog</a></strong></span><span class="SemanticString">, using </span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="http://notion.so">Notion.so</a></span><span class="SemanticString"> as data source.</span></span>      </p>
+            <div class="DateTagBar">
+                <span class="DateTagBar__Date">Posted on Wed, Jul 24, 2019</span>
+                        <span class="DateTagBar__Tag DateTagBar__Tag--gray">
+          <a href="tag/announcement.html">announcement</a>
+        </span>
+              </div>
+    </article>
+                                                                  </article>
+  <footer class="Footer">
+    <div>&copy; Alexander's Note 2019</div>
+    <div>&centerdot;</div>
+    <div>Powered by <a href="https://github.com/dragonman225/notablog" target="_blank"
+        rel="noopener noreferrer">Notablog</a>.
+    </div>
+  </footer>
 </body>
 
 </html>
