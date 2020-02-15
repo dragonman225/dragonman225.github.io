@@ -59,6 +59,16 @@ p {
   margin: 0;
 }
 
+/* Anchor */
+
+.Anchor {
+  color: inherit;
+  text-decoration: none;
+  padding-right: 4px;
+  margin-left: -20px;
+  visibility: hidden;
+}
+
 /* Audio */
 
 .Audio {
@@ -178,6 +188,10 @@ pre.Code code {
   padding: 3px 2px;
 }
 
+.CollectionInline>h3:hover>.Anchor {
+  visibility: visible;
+}
+
 .Table {
   overflow-x: scroll;
 }
@@ -213,7 +227,9 @@ pre.Code code {
 .Table>table th {
   text-align: left;
   font-weight: normal;
-  opacity: 0.6;
+  color: var(--color-text-default-light);
+  /* Default width, which may be overridden by inline style attr. */
+  width: 200px;
 }
 
 .Table__CellTitle>a {
@@ -523,7 +539,7 @@ pre.Code code {
 
 .File__Size {
   margin-left: 6px;
-  opacity: 0.6;
+  color: var(--color-text-default-light);
   font-size: 0.75em;
 }
 
@@ -535,15 +551,7 @@ pre.Code code {
   padding: 3px 2px;
 }
 
-.Heading>a {
-  color: inherit;
-  text-decoration: none;
-  padding-right: 4px;
-  margin-left: -20px;
-  visibility: hidden;
-}
-
-.Heading:hover>a {
+.Heading:hover>.Anchor {
   visibility: visible;
 }
 
@@ -622,7 +630,7 @@ pre.Code code {
   text-align: left;
 }
 
-.Image--FullWidth>figure>img {
+.Image--FullWidth>figure img {
   /* 15px is scrollbar */
   width: calc(100vw - 15px);
   object-fit: cover;
@@ -632,7 +640,7 @@ pre.Code code {
   padding: 6px 26px;
 }
 
-.Image--Normal>figure>img, .Image--PageWidth>figure>img {
+.Image--Normal>figure img, .Image--PageWidth>figure img {
   max-width: 100%;
   object-fit: contain;
 }
@@ -642,8 +650,6 @@ pre.Code code {
 }
 
 /* NumberedList */
-
-/* BulletedList */
 
 .NumberedListWrapper {
   margin: 2px 0;
@@ -702,6 +708,10 @@ pre.Code code {
 
 .PDF__Content {
   text-align: center;
+}
+
+.PDF__Content>embed {
+  max-width: 100%;
 }
 
 .PDF__Caption {
@@ -972,6 +982,10 @@ pre.Code code {
   width: 0.75em;
   height: 0.75em;
   fill: white;
+}
+
+.IconCheckboxUnchecked {
+  display: flex;
 }
 
 .IconCheckboxUnchecked>svg {
