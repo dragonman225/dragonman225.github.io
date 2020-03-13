@@ -813,6 +813,10 @@ pre.Code code {
   word-break: break-word;
 }
 
+.SemanticString__Fragment--Marked {
+  background-color: inherit;
+}
+
 .SemanticString__Fragment--ColorDefault {
   color: var(--color-text-default);
 }
