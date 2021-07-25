@@ -2,40 +2,45 @@
 <html lang="en">
 
 <head>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-152513368-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'UA-152513368-1');
-  </script>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- iOS Safari -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <!-- Chrome, Firefox OS and Opera Status Bar Color -->
-  <meta name="theme-color" content="#FFFFFF">
   <meta property="og:title" content="Setup CJK Input Methods on Linux with Fcitx">
+  
     <meta name="description" content="Setting up local input methods is one of the most important but frustrating work for non-English Linux users. Here I share how I setup CJK (Chinese, Japanese, Korean) input methods.">
-  <meta property="og:description" content="Setting up local input methods is one of the most important but frustrating work for non-English Linux users. Here I share how I setup CJK (Chinese, Japanese, Korean) input methods.">
-    <meta property="og:type" content="blog">
+    <meta property="og:description" content="Setting up local input methods is one of the most important but frustrating work for non-English Linux users. Here I share how I setup CJK (Chinese, Japanese, Korean) input methods.">
+  
+  <meta property="og:type" content="blog">
   <title>Setup CJK Input Methods on Linux with Fcitx</title>
-  <!-- Favicon -->
-    <link rel="shortcut icon" href="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F02d9fd71-766f-4198-9511-c3cfa0224657%2F25148955.png?table=collection&id=7594986e-09be-4821-a107-14c738674417">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css">
-  <link rel="stylesheet" type="text/css"
-    href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism.min.css">
-  <link rel="stylesheet" type="text/css" href="css/SourceSansPro.css">
-  <link rel="stylesheet" type="text/css" href="css/notablog.css">
-  <link rel="stylesheet" type="text/css" href="css/theme.css">
-  <style>
-    :root {
-      font-size: 20px;
-    }
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-152513368-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
 
+  gtag('config', 'UA-152513368-1');
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- Chrome, Firefox OS and Opera Status Bar Color -->
+<meta name="theme-color" content="#FFFFFF">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css">
+<link rel="stylesheet" type="text/css"
+  href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism.min.css">
+<link rel="stylesheet" type="text/css" href="css/SourceSansPro.css">
+<link rel="stylesheet" type="text/css" href="css/theme.css">
+<link rel="stylesheet" type="text/css" href="css/notablog.css">
+<!-- Favicon -->
+
+  <link rel="shortcut icon" href="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F02d9fd71-766f-4198-9511-c3cfa0224657%2F25148955.png?table=collection&amp;id=7594986e-09be-4821-a107-14c738674417">
+
+<style>
+  :root {
+    font-size: 20px;
+  }
+</style>
+  <style>
     .DateTagBar {
       margin-top: 1.0rem;
     }
@@ -44,59 +49,131 @@
 
 <body>
   <nav class="Navbar">
-    <a href="index.html">
-      <div class="Navbar__Btn"><span><img class="inline-img-icon" src="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F02d9fd71-766f-4198-9511-c3cfa0224657%2F25148955.png?table=collection&id=7594986e-09be-4821-a107-14c738674417"></span> <span>Home</span></div>
-    </a>
-                                                                                                                                            <span class="Navbar__Delim">&centerdot;</span>
-    <a href="now.html">
-      <div class="Navbar__Btn"><span>🎯</span> <span>Now</span></div>
-    </a>
-                <span class="Navbar__Delim">&centerdot;</span>
-    <a href="about.html">
-      <div class="Navbar__Btn"><span>🏅</span> <span>About</span></div>
-    </a>
-                <span class="Navbar__Delim">&centerdot;</span>
-    <a href="jade.html">
-      <div class="Navbar__Btn"><span><img class="inline-img-icon" src="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F91ce64e9-debd-4384-991c-e52e82eeb1c2%2Fjade.png?table=block&id=65166b73-3337-4374-b13b-040ca1599593"></span> <span>Jade</span></div>
-    </a>
-                <span class="Navbar__Delim">&centerdot;</span>
-    <a href="notablog.html">
-      <div class="Navbar__Btn"><span>📝</span> <span>Notablog</span></div>
-    </a>
-                <span class="Navbar__Delim">&centerdot;</span>
-    <a href="library.html">
-      <div class="Navbar__Btn"><span>📚</span> <span>Library</span></div>
-    </a>
-                                                          </nav>
+  <a href="index.html">
+    <div class="Navbar__Btn"><span><img class="inline-img-icon" src="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F02d9fd71-766f-4198-9511-c3cfa0224657%2F25148955.png?table=collection&id=7594986e-09be-4821-a107-14c738674417"></span> <span>Home</span></div>
+  </a>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="now.html">
+        <div class="Navbar__Btn"><span>🎯</span> <span>Now</span></div>
+      </a>
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="about.html">
+        <div class="Navbar__Btn"><span>🏅</span> <span>About</span></div>
+      </a>
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="jade.html">
+        <div class="Navbar__Btn"><span><img class="inline-img-icon" src="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F91ce64e9-debd-4384-991c-e52e82eeb1c2%2Fjade.png?table=block&id=65166b73-3337-4374-b13b-040ca1599593"></span> <span>Jade</span></div>
+      </a>
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="notablog.html">
+        <div class="Navbar__Btn"><span>📝</span> <span>Notablog</span></div>
+      </a>
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="library.html">
+        <div class="Navbar__Btn"><span>📚</span> <span>Library</span></div>
+      </a>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</nav>
   <header class="Header">
-        <div class="Header__Spacer Header__Spacer--NoCover">
+    
+    <div class="Header__Spacer Header__Spacer--NoCover">
     </div>
-        <div class="Header__Icon"><span>🎨</span></div>
-        <h1 class="Header__Title">Setup CJK Input Methods on Linux with Fcitx</h1>
-        <div class="DateTagBar">
-            <span class="DateTagBar__Item DateTagBar__Date">Posted on Tue, Sep 22, 2020</span>
-                  <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--gray">
-        <a href="tag/Note.html">Note</a>
-      </span>
-            <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--yellow">
-        <a href="tag/Linux.html">Linux</a>
-      </span>
-            <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--green">
-        <a href="tag/🌲 Flourishing.html">🌲 Flourishing</a>
-      </span>
-          </div>
-      </header>
+    
+      <div class="Header__Icon"><span>🎨</span></div>
+    
+    <h1 class="Header__Title">Setup CJK Input Methods on Linux with Fcitx</h1>
+    
+      <div class="DateTagBar">
+        
+          <span class="DateTagBar__Item DateTagBar__Date">Posted on Tue, Sep 22, 2020</span>
+        
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--gray">
+            <a href="tag/Note.html">Note</a>
+          </span>
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--yellow">
+            <a href="tag/Linux.html">Linux</a>
+          </span>
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--green">
+            <a href="tag/🌲 Flourishing.html">🌲 Flourishing</a>
+          </span>
+        
+      </div>
+    
+  </header>
   <article id="https://www.notion.so/9dc96df387074a9ebe9155f5b40991d3" class="PageRoot"><ul id="https://www.notion.so/f3a5d202252d42968c7c95254edd67e1" class="ColorfulBlock ColorfulBlock--ColorGray TableOfContents"><li class="TableOfContents__Item"><a href="#https://www.notion.so/ebf99827c61c47699cab7a4727a03ec2"><div style="margin-left:0px"><span class="SemanticStringArray"><span class="SemanticString">Installation</span></span></div></a></li><li class="TableOfContents__Item"><a href="#https://www.notion.so/871265d28c00429295020cb9885fb031"><div style="margin-left:0px"><span class="SemanticStringArray"><span class="SemanticString">Usage Notes</span></span></div></a></li><li class="TableOfContents__Item"><a href="#https://www.notion.so/b88190691e02493a9c472834b6df506e"><div style="margin-left:24px"><span class="SemanticStringArray"><span class="SemanticString">General</span></span></div></a></li><li class="TableOfContents__Item"><a href="#https://www.notion.so/8a20d31047a348068e053fbc58b557a6"><div style="margin-left:24px"><span class="SemanticStringArray"><span class="SemanticString">Japanese (</span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">fcitx-mozc</code></span><span class="SemanticString">)</span></span></div></a></li><li class="TableOfContents__Item"><a href="#https://www.notion.so/de092391e29942f6b2d446f16a120819"><div style="margin-left:24px"><span class="SemanticStringArray"><span class="SemanticString">Issues</span></span></div></a></li></ul><div id="https://www.notion.so/07a8c0d05f76437b96d8a144e5390a18" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"></span></p></div><div id="https://www.notion.so/c0413517c2cc428c96a369049df829fb" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Setting up local input methods is one of the most important but frustrating work for non-English Linux users. Here I share how I setup CJK (Chinese, Japanese, Korean) input methods.</span></span></p></div><h2 id="https://www.notion.so/ebf99827c61c47699cab7a4727a03ec2" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--2"><a class="Anchor" href="#https://www.notion.so/ebf99827c61c47699cab7a4727a03ec2"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">Installation</span></span></h2><div id="https://www.notion.so/3d679e72a563464a96cbe5cad4938460" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Install packages. Below is for Arch Linux, in other Linux distributions, package names may vary.</span></span></p></div><pre id="https://www.notion.so/e8840583b9da403297ace1c11d2b6406" class="Code Code--NoWrap"><code><span class="SemanticStringArray"><span class="SemanticString"><span><span class="token function">sudo</span> pacman -S <span class="token punctuation">\</span>
 fcitx fcitx-configtool fcitx-qt5 <span class="token punctuation">\</span>
 fcitx-chewing fcitx-hangul fcitx-mozc fcitx-ui-light</span></span></span></code></pre><ul class="BulletedListWrapper"><li id="https://www.notion.so/7855ddfdca364c50b7f21dcaaf1c94c6" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">fcitx-chewing</code></span><span class="SemanticString">: For Chinese.</span></span></li><li id="https://www.notion.so/1f83a3e6e3774b8f9430caa548ce7fbe" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">fcitx-hangul</code></span><span class="SemanticString">: For Korean.</span></span></li><li id="https://www.notion.so/3e6d0a260601469a9688a299248e0ed4" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">fcitx-mozc</code></span><span class="SemanticString">: For Japanese.</span></span></li></ul><div id="https://www.notion.so/73b65b48a42b418dac1b8a89c46b8928" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"></span></p></div><div id="https://www.notion.so/18b1aa98a4a7498c84be893112afcdcd" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Add the following to </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">~/.xprofile</code></span><span class="SemanticString"> or </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">~/.xinitrc</code></span><span class="SemanticString"> depending on your environment. Refer to </span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://wiki.archlinux.org/index.php/Fcitx#Set_environment_variables_for_IM_modules">Set environment variables for IM modules</a></span><span class="SemanticString">.</span></span></p></div><pre id="https://www.notion.so/15db090a50654ce6929a8046edb1730e" class="Code Code--NoWrap"><code><span class="SemanticStringArray"><span class="SemanticString"><span><span class="token builtin class-name">export</span> <span class="token assign-left variable">GTK_IM_MODULE</span><span class="token operator">=</span>fcitx
 <span class="token builtin class-name">export</span> <span class="token assign-left variable">QT_IM_MODULE</span><span class="token operator">=</span>fcitx
-<span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">XMODIFIERS</span></span><span class="token operator">=</span>@im<span class="token operator">=</span>fcitx</span></span></span></code></pre><div id="https://www.notion.so/54c84d7c8a6f45e7acc8834a6c459b9f" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"></span></p></div><div id="https://www.notion.so/6c9d45ec282c4af0ab3d37cb07d2ecf8" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Then, logout and login, launch the app </span><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Fcitx Configuration</strong></span><span class="SemanticString">, click </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">+</code></span><span class="SemanticString"> to add CJK input methods (uncheck </span><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Only Show Current Language</strong></span><span class="SemanticString"> to see all input methods).</span></span></p></div><div id="https://www.notion.so/028685167e7a4fad9086bd2aa6e7e2c4" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"></span></p></div><div id="https://www.notion.so/7fe43d54c0da4a7abd4ae8947d579255" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Configure shortcuts that switch between input methods.</span></span></p></div><ul class="BulletedListWrapper"><li id="https://www.notion.so/043daa7cbd8b469fb9a1d21f1224974e" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Trigger Input Method</strong></span><span class="SemanticString">: Switch between English and CJK.</span></span></li><li id="https://www.notion.so/fc19ee4bacce495fb1506a71990e4c62" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Scroll between Input Method</strong></span><span class="SemanticString">: Switch between Chinese, Japanese, Korean.</span></span></li></ul><div id="https://www.notion.so/bc9229e6bad041f39bc04e5dcdc3a9fc" class="Image Image--PageWidth"><figure><a href="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc22d5621-d945-46a9-afb3-a1921709c241%2Ffcitx_config.png?width=724&amp;table=block&amp;id=bc9229e6-bad0-41f3-9bc0-4e5dcdc3a9fc"><img src="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc22d5621-d945-46a9-afb3-a1921709c241%2Ffcitx_config.png?width=724&amp;table=block&amp;id=bc9229e6-bad0-41f3-9bc0-4e5dcdc3a9fc" style="width:100%"/></a><figcaption><span class="SemanticStringArray"></span></figcaption></figure></div><div id="https://www.notion.so/9b4aea0d44c8446d8d097e1396775216" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"></span></p></div><div id="https://www.notion.so/cc0816c076a140e298065b060180119b" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">The CJK input methods should now be ready!</span></span></p></div><h2 id="https://www.notion.so/871265d28c00429295020cb9885fb031" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--2"><a class="Anchor" href="#https://www.notion.so/871265d28c00429295020cb9885fb031"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">Usage Notes</span></span></h2><h3 id="https://www.notion.so/b88190691e02493a9c472834b6df506e" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--3"><a class="Anchor" href="#https://www.notion.so/b88190691e02493a9c472834b6df506e"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">General</span></span></h3><ul class="BulletedListWrapper"><li id="https://www.notion.so/e77b7fc616e34546b4146ce86df74e5b" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">Ctrl + Alt + Shift + U</code></span><span class="SemanticString"> to search for Unicode characters, like emojis.</span></span></li></ul><h3 id="https://www.notion.so/8a20d31047a348068e053fbc58b557a6" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--3"><a class="Anchor" href="#https://www.notion.so/8a20d31047a348068e053fbc58b557a6"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">Japanese (</span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">fcitx-mozc</code></span><span class="SemanticString">)</span></span></h3><ul class="BulletedListWrapper"><li id="https://www.notion.so/b6d98b44308e414a8d679ab002cf1b2f" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">I set &quot;Input mode&quot; to &quot;Romaji&quot;.</span></span></li><li id="https://www.notion.so/d09ca101266a43bd8785e886006a6e68" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">To type Hiragana（平仮名）: Just type the romanization of the Japanese characters.</span></span></li><li id="https://www.notion.so/0bdea2936f064cc7a83cbd99ccfb4060" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">To type Katakana（片仮名）: Type Hiragana, then press </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">F7</code></span><span class="SemanticString">.</span></span></li><li id="https://www.notion.so/e1d81853ccc44784ae9a68f85e9434dc" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">To type Hankaku Kana（半角カナ）: Type Hiragana, then press </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">F8</code></span><span class="SemanticString">.</span></span></li><li id="https://www.notion.so/f13352b3aeda430898a1604851b6eafe" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">To type Sukuon（促音）: Prepend </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">x</code></span><span class="SemanticString"> before the character you want to type. e.g. type </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">chixyo</code></span><span class="SemanticString"> for </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">ちょ</code></span><span class="SemanticString">.</span></span></li><li id="https://www.notion.so/c8444193ba2e4aeab778332b78ed5cd8" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">To type ー（長音符）: Press the minus button.</span></span></li></ul><h3 id="https://www.notion.so/de092391e29942f6b2d446f16a120819" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--3"><a class="Anchor" href="#https://www.notion.so/de092391e29942f6b2d446f16a120819"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">Issues</span></span></h3><ul class="BulletedListWrapper"><li id="https://www.notion.so/c3b47468a565441ea5e1583f2c618ae6" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">Do not install </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">ibus</code></span><span class="SemanticString">, it conflicts with </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">fcitx</code></span><span class="SemanticString">. Be careful of Zoom, its Arch Linux package brings its own </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">ibus</code></span><span class="SemanticString">, which is guaranteed to accidentally break the system.</span></span></li></ul></article>  <footer class="Footer">
-    <div>&copy; Alexander's Garden 2019-2021</div>
-    <div>&centerdot;</div>
-    <div>Powered by <a href="https://github.com/dragonman225/notablog" target="_blank"
-        rel="noopener noreferrer">Notablog</a>.
-    </div>
-  </footer>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">XMODIFIERS</span></span><span class="token operator">=</span>@im<span class="token operator">=</span>fcitx</span></span></span></code></pre><div id="https://www.notion.so/54c84d7c8a6f45e7acc8834a6c459b9f" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"></span></p></div><div id="https://www.notion.so/6c9d45ec282c4af0ab3d37cb07d2ecf8" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Then, logout and login, launch the app </span><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Fcitx Configuration</strong></span><span class="SemanticString">, click </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">+</code></span><span class="SemanticString"> to add CJK input methods (uncheck </span><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Only Show Current Language</strong></span><span class="SemanticString"> to see all input methods).</span></span></p></div><div id="https://www.notion.so/028685167e7a4fad9086bd2aa6e7e2c4" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"></span></p></div><div id="https://www.notion.so/7fe43d54c0da4a7abd4ae8947d579255" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Configure shortcuts that switch between input methods.</span></span></p></div><ul class="BulletedListWrapper"><li id="https://www.notion.so/043daa7cbd8b469fb9a1d21f1224974e" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Trigger Input Method</strong></span><span class="SemanticString">: Switch between English and CJK.</span></span></li><li id="https://www.notion.so/fc19ee4bacce495fb1506a71990e4c62" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Scroll between Input Method</strong></span><span class="SemanticString">: Switch between Chinese, Japanese, Korean.</span></span></li></ul><div id="https://www.notion.so/bc9229e6bad041f39bc04e5dcdc3a9fc" class="Image Image--PageWidth"><figure><a href="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc22d5621-d945-46a9-afb3-a1921709c241%2Ffcitx_config.png?width=724&amp;table=block&amp;id=bc9229e6-bad0-41f3-9bc0-4e5dcdc3a9fc"><img src="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc22d5621-d945-46a9-afb3-a1921709c241%2Ffcitx_config.png?width=724&amp;table=block&amp;id=bc9229e6-bad0-41f3-9bc0-4e5dcdc3a9fc" style="width:100%"/></a><figcaption><span class="SemanticStringArray"></span></figcaption></figure></div><div id="https://www.notion.so/9b4aea0d44c8446d8d097e1396775216" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"></span></p></div><div id="https://www.notion.so/cc0816c076a140e298065b060180119b" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">The CJK input methods should now be ready!</span></span></p></div><h2 id="https://www.notion.so/871265d28c00429295020cb9885fb031" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--2"><a class="Anchor" href="#https://www.notion.so/871265d28c00429295020cb9885fb031"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">Usage Notes</span></span></h2><h3 id="https://www.notion.so/b88190691e02493a9c472834b6df506e" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--3"><a class="Anchor" href="#https://www.notion.so/b88190691e02493a9c472834b6df506e"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">General</span></span></h3><ul class="BulletedListWrapper"><li id="https://www.notion.so/e77b7fc616e34546b4146ce86df74e5b" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">Ctrl + Alt + Shift + U</code></span><span class="SemanticString"> to search for Unicode characters, like emojis.</span></span></li></ul><h3 id="https://www.notion.so/8a20d31047a348068e053fbc58b557a6" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--3"><a class="Anchor" href="#https://www.notion.so/8a20d31047a348068e053fbc58b557a6"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">Japanese (</span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">fcitx-mozc</code></span><span class="SemanticString">)</span></span></h3><ul class="BulletedListWrapper"><li id="https://www.notion.so/b6d98b44308e414a8d679ab002cf1b2f" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">I set &quot;Input mode&quot; to &quot;Romaji&quot;.</span></span></li><li id="https://www.notion.so/d09ca101266a43bd8785e886006a6e68" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">To type Hiragana（平仮名）: Just type the romanization of the Japanese characters.</span></span></li><li id="https://www.notion.so/0bdea2936f064cc7a83cbd99ccfb4060" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">To type Katakana（片仮名）: Type Hiragana, then press </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">F7</code></span><span class="SemanticString">.</span></span></li><li id="https://www.notion.so/e1d81853ccc44784ae9a68f85e9434dc" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">To type Hankaku Kana（半角カナ）: Type Hiragana, then press </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">F8</code></span><span class="SemanticString">.</span></span></li><li id="https://www.notion.so/f13352b3aeda430898a1604851b6eafe" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">To type Sukuon（促音）: Prepend </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">x</code></span><span class="SemanticString"> before the character you want to type. e.g. type </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">chixyo</code></span><span class="SemanticString"> for </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">ちょ</code></span><span class="SemanticString">.</span></span></li><li id="https://www.notion.so/c8444193ba2e4aeab778332b78ed5cd8" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">To type ー（長音符）: Press the minus button.</span></span></li></ul><h3 id="https://www.notion.so/de092391e29942f6b2d446f16a120819" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--3"><a class="Anchor" href="#https://www.notion.so/de092391e29942f6b2d446f16a120819"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">Issues</span></span></h3><ul class="BulletedListWrapper"><li id="https://www.notion.so/c3b47468a565441ea5e1583f2c618ae6" class="BulletedList"><span class="SemanticStringArray"><span class="SemanticString">Do not install </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">ibus</code></span><span class="SemanticString">, it conflicts with </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">fcitx</code></span><span class="SemanticString">. Be careful of Zoom, its Arch Linux package brings its own </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">ibus</code></span><span class="SemanticString">, which is guaranteed to accidentally break the system.</span></span></li></ul></article>
+  <footer class="Footer">
+  <div>&copy; Alexander&#39;s Garden 2019-2021</div>
+  <div>&centerdot;</div>
+  <div>Powered by <a href="https://github.com/dragonman225/notablog" target="_blank"
+      rel="noopener noreferrer">Notablog</a>.
+  </div>
+</footer>
 </body>
 
 </html>
