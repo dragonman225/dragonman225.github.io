@@ -33,7 +33,7 @@ See the Apache Version 2.0 License for specific language governing permissions
 and limitations under the License.
 ***************************************************************************** */
 
-/*! Jade v0.2.0 Copyright (c) Wen-Zhi (Alexander) Wang. All rights reserved. */
+/*! Jade v0.2.2 Copyright (c) Wen-Zhi (Alexander) Wang. All rights reserved. */
 
 /*! https://mths.be/esrever v0.2.0 by @mathias */
 
