@@ -67,9 +67,12 @@
   padding: 0px 96px;
 }
 
+.utterances {
+  padding-top: 5rem;
+}
+
 .utterances-frame {
   position: static;
-  width: 100%;
 }
 
 @media only screen and (max-width: 900px) {
