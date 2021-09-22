@@ -59,17 +59,24 @@
 
 .Header,
 .PageRoot,
-.ArticleList {
+.ArticleList,
+.utterances {
   width: 900px;
   max-width: 100%;
   margin: 0px auto;
   padding: 0px 96px;
 }
 
+.utterances-frame {
+  position: static;
+  width: 100%;
+}
+
 @media only screen and (max-width: 900px) {
   .Header,
   .PageRoot,
-  .ArticleList {
+  .ArticleList,
+  .utterances {
     max-width: 87.5%;
     padding-left: 0px;
     padding-right: 0px;
