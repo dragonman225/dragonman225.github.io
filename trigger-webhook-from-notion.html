@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-152513368-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-152513368-1');
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- Chrome, Firefox OS and Opera Status Bar Color -->
+<meta name="theme-color" content="#FFFFFF">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css">
+<link rel="stylesheet" type="text/css"
+  href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism.min.css">
+<link rel="stylesheet" type="text/css" href="css/SourceSansPro.css">
+<link rel="stylesheet" type="text/css" href="css/theme.css">
+<link rel="stylesheet" type="text/css" href="css/notablog.css">
+<!-- Favicon -->
+
+  <link rel="shortcut icon" href="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F02d9fd71-766f-4198-9511-c3cfa0224657%2F25148955.png?table=collection&amp;id=7594986e-09be-4821-a107-14c738674417">
+
+<style>
+  :root {
+    font-size: 20px;
+  }
+</style>
+  <title>Trigger Webhook from Notion&nbsp;|&nbsp;Alexander&#39;s Garden</title>
+  <meta property="og:type" content="blog">
+  <meta property="og:title" content="Trigger Webhook from Notion">
+  
+    <meta name="description" content="Click a button on a Notion table to trigger Netlify’s build webhook to update my blog built with Notablog.">
+    <meta property="og:description" content="Click a button on a Notion table to trigger Netlify’s build webhook to update my blog built with Notablog.">
+  
+  
+    <meta property="og:image" content="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F17d744ce-2582-400e-9a4a-fefa25781693%2Fnotion.png?table=block&amp;id=268a13bc-14cc-4e04-8e7b-b3464005b598">
+  
+  <style>
+    .DateTagBar {
+      margin-top: 1.0rem;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="Navbar">
+  <a href="index.html">
+    <div class="Navbar__Btn">
+      
+        <span><img class="inline-img-icon" src="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F02d9fd71-766f-4198-9511-c3cfa0224657%2F25148955.png?table=collection&amp;id=7594986e-09be-4821-a107-14c738674417"></span>&nbsp;
+      
+      <span>Home</span>
+    </div>
+  </a>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="now.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;🎯&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>Now</span>
+        </div>
+      </a>
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="about.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;🏅&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>About</span>
+        </div>
+      </a>
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="jade.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F91ce64e9-debd-4384-991c-e52e82eeb1c2%2Fjade.png?table=block&amp;id=65166b73-3337-4374-b13b-040ca1599593"></span>&nbsp;
+          
+          <span>Jade</span>
+        </div>
+      </a>
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="notablog.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;📝&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>Notablog</span>
+        </div>
+      </a>
+    
+  
+    
+      <span class="Navbar__Delim">&centerdot;</span>
+      <a href="library.html">
+        <div class="Navbar__Btn">
+          
+            <span><img class="inline-img-icon" src="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text text-anchor=%22middle%22 dominant-baseline=%22middle%22 x=%2250%22 y=%2255%22 font-size=%2280%22&gt;📚&lt;/text&gt;&lt;/svg&gt;"></span>&nbsp;
+          
+          <span>Library</span>
+        </div>
+      </a>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</nav>
+  <header class="Header">
+    
+    <div class="Header__Spacer Header__Spacer--NoCover">
+    </div>
+    
+      <div class="Header__Icon">
+        <span><img class="inline-img-icon" src="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F17d744ce-2582-400e-9a4a-fefa25781693%2Fnotion.png?table=block&amp;id=268a13bc-14cc-4e04-8e7b-b3464005b598"></span>
+      </div>
+    
+    <h1 class="Header__Title">Trigger Webhook from Notion</h1>
+    
+      <div class="DateTagBar">
+        
+          <span class="DateTagBar__Item DateTagBar__Date">Posted on Wed, Aug 14, 2019</span>
+        
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--brown">
+            <a href="tag/Article.html">Article</a>
+          </span>
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--default">
+            <a href="tag/Notion.html">Notion</a>
+          </span>
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--blue">
+            <a href="tag/Web.html">Web</a>
+          </span>
+        
+          <span class="DateTagBar__Item DateTagBar__Tag DateTagBar__Tag--green">
+            <a href="tag/🌲 Flourishing.html">🌲 Flourishing</a>
+          </span>
+        
+      </div>
+    
+  </header>
+  <article id="https://www.notion.so/268a13bc14cc4e048e7bb3464005b598" class="PageRoot"><div id="https://www.notion.so/054abc5277654bf4b0461d69e48a280f" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Trigger a webhook that activates on a POST request directly from a </span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://www.notion.so/b6fcf809ca5047b89f423948dce013a0?v=03ddc4d6130a47f8b68e74c9d0061de2">Notion table</a></span><span class="SemanticString">.</span></span></p></div><div id="https://www.notion.so/aa73ad10837b4ad192666bfad8bd61ca" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Below is a demo where I can just click a button on a Notion table and trigger </span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://www.netlify.com/">Netlify</a></span><span class="SemanticString">’s build webhook to update my blog built with </span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://github.com/dragonman225/notablog">Notablog</a></span><span class="SemanticString">.</span></span></p></div><div id="https://www.notion.so/6e71fad92f794946964c60b459e5a137" class="Image Image--PageWidth"><figure><a href="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fcaaba52f-66b3-4c63-b89c-346c82ce65aa%2Fdemo.gif?width=1354&amp;table=block&amp;id=6e71fad9-2f79-4946-964c-60b459e5a137"><img src="https://www.notion.so/signed/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fcaaba52f-66b3-4c63-b89c-346c82ce65aa%2Fdemo.gif?width=1354&amp;table=block&amp;id=6e71fad9-2f79-4946-964c-60b459e5a137" style="width:100%"/></a><figcaption><span class="SemanticStringArray"></span></figcaption></figure></div><h2 id="https://www.notion.so/568cec81bd31478cbfa3fa5233006b33" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--2"><a class="Anchor" href="#https://www.notion.so/568cec81bd31478cbfa3fa5233006b33"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">How to Use</span></span></h2><div id="https://www.notion.so/2dc87b4fc91f4b8dadc4587748a38b5a" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Download this repository ↓ and follow the steps below.</span></span></p></div><div id="https://www.notion.so/0ec915daf4ee48539a62fa73adc6fd22" class="Bookmark"><a href="https://github.com/dragonman225/trigger-webhook-from-notion"><h5 class="Bookmark__Title">GitHub - dragonman225/trigger-webhook-from-notion: Add a button that can trigger a POST webhook in Notion.so&#x27;s table.</h5><p class="Bookmark__Desc">Trigger a webhook that requires a POST request directly from Notion&#x27;s table. Below is a demo where I trigger Netlify&#x27;s build webhook of my blog built with notablog framework. This is a proof-of-concept, so it requires a few changes in code to adapt to your need.</p><p class="Bookmark__Link">https://github.com/dragonman225/trigger-webhook-from-notion</p></a></div><div id="https://www.notion.so/83f42c93afad49e586cdc577b4ed1228" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">This is a </span><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">proof-of-concept</strong></span><span class="SemanticString">, so it requires a few changes in code to adapt to your need. They are simple, and I’ll explain as clear as possible.</span></span></p></div><ol class="NumberedListWrapper"><li id="https://www.notion.so/a9b49025759c44899f42a740f1158aa2" class="NumberedList" value="1"><span class="SemanticStringArray"><span class="SemanticString">Open </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">src/extension.js</code></span><span class="SemanticString">, replace the dummy </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">buildHookUrl</code></span><span class="SemanticString"> with your webhook URL.</span></span><div id="https://www.notion.so/f108863ea12d4bb18dbfe39efc103f15" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Any webhook should work, as long as the webhook can be triggered by an empty </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">POST</code></span><span class="SemanticString"> request (for example, Netlify’s).</span></span></p></div><pre id="https://www.notion.so/53d8607ba5524e128e083eabaff55f76" class="Code Code--NoWrap"><code><span class="SemanticStringArray"><span class="SemanticString"><span><span class="token keyword">const</span> buildHookUrl <span class="token operator">=</span> <span class="token string">'https://Replace.this.string.with.your.webhook.URL'</span></span></span></span></code></pre></li><li id="https://www.notion.so/9cdca72711a8464bab049179aa08725b" class="NumberedList" value="2"><span class="SemanticStringArray"><span class="SemanticString">(Optional) If you want the trigger button appear only on one table, open </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">manifest.json</code></span><span class="SemanticString">, in </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">content_scripts.matches</code></span><span class="SemanticString">, change </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">https://www.notion.so/*</code></span><span class="SemanticString"> to a table’s URL.</span></span><div id="https://www.notion.so/ba4cbfb9b90a4e0eb934744b120c67a5" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">If you skip this step, you will see the trigger button </span><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">on every table</strong></span><span class="SemanticString">.</span></span></p></div><pre id="https://www.notion.so/ce06629c2de54dc5a1c355590b2aae22" class="Code Code--NoWrap"><code><span class="SemanticStringArray"><span class="SemanticString"><span><span class="token property">"content_scripts"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    <span class="token property">"matches"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token string">"https://www.notion.so/*"</span> <span class="token comment">// Change this</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token comment">// ...</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">]</span></span></span></span></code></pre></li><li id="https://www.notion.so/1c6ef1d741894f9bb4a4c640437c9caa" class="NumberedList" value="3"><span class="SemanticStringArray"><span class="SemanticString">Load this extension into your browser. Since this is an unpacked extension, it needs to be loaded in developer mode or debug mode.</span></span><div id="https://www.notion.so/5a32c6f5a978488eb21f9344f8751475" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">For </span><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Google Chrome</strong></span><span class="SemanticString"> or </span><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Chromium-based</strong></span><span class="SemanticString">, follow the tutorial: </span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://developer.chrome.com/extensions/getstarted">https://developer.chrome.com/extensions/getstarted</a></span><span class="SemanticString">.</span></span></p></div><div id="https://www.notion.so/8e46eadaed3b40d4838287c3e65f6c66" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">For </span><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">Firefox</strong></span><span class="SemanticString">, follow the tutorial: </span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_first_WebExtension#Installing">https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_first_WebExtension#Installing</a></span><span class="SemanticString">.</span></span></p></div></li><li id="https://www.notion.so/8de55039bb2a4fd8af27759b1c23e496" class="NumberedList" value="4"><span class="SemanticStringArray"><span class="SemanticString">Open a table in Notion to test it out!</span></span></li></ol><h2 id="https://www.notion.so/e9e73eceb3c54990b32c33838d650279" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--2"><a class="Anchor" href="#https://www.notion.so/e9e73eceb3c54990b32c33838d650279"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">How it works</span></span></h2><h3 id="https://www.notion.so/245ca9824f8d44e29eb31279170e4a2a" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--3"><a class="Anchor" href="#https://www.notion.so/245ca9824f8d44e29eb31279170e4a2a"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">Motivation</span></span></h3><div id="https://www.notion.so/55f7cdf86b2a4c44b9de142f0fd0fc17" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">In my case, I want to trigger Netlify’s webhook to rebuild my static blog when I update posts on Notion with a single click. The webhook needs to be triggered by an empty </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">POST</code></span><span class="SemanticString"> request, but I couldn’t find a block in Notion that can do a </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">POST</code></span><span class="SemanticString"> request. In addition, I use a full-page table to manage my posts, so there’s actually no way to insert other type of blocks unless I change the </span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://github.com/dragonman225/notablog">Notablog</a></span><span class="SemanticString">’s logic.</span></span></p></div><h3 id="https://www.notion.so/0e7513e0989142ecb5f5d1dac97aebb3" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--3"><a class="Anchor" href="#https://www.notion.so/0e7513e0989142ecb5f5d1dac97aebb3"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">The Extension</span></span></h3><h3 id="https://www.notion.so/44a356cfd5514590a43ad3a711b05c32" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--3"><a class="Anchor" href="#https://www.notion.so/44a356cfd5514590a43ad3a711b05c32"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">Prepare a trigger button</span></span></h3><div id="https://www.notion.so/f3a8305a883e427cbb443c1f4d19eaaa" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">I think of HTML’s </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">&lt;form&gt;</code></span><span class="SemanticString">, where I can specify the HTTP method and in my case I just need to </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">POST</code></span><span class="SemanticString"> with an empty form. This is attractive to me because it doesn’t need AJAX, which means easier to implement !</span></span></p></div><div id="https://www.notion.so/59eff5b0856d43c29adae251266fe64a" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">So, I write the following</span></span></p></div><pre id="https://www.notion.so/b991b95ba634447c9d6b8abea8035ad3" class="Code Code--NoWrap"><code><span class="SemanticStringArray"><span class="SemanticString"><span><span class="token comment">/** Prepare a button */</span>
+<span class="token keyword">const</span> button <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'DIV'</span><span class="token punctuation">)</span>
+<span class="token comment">/** Give the button an id so we can check if it exists later */</span>
+button<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">'id'</span><span class="token punctuation">,</span> <span class="token constant">BUTTON_ID</span><span class="token punctuation">)</span>
+button<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">'style'</span><span class="token punctuation">,</span> <span class="token string">'margin-left: 10px; display: inline-flex'</span><span class="token punctuation">)</span>
+<span class="token comment">/** * Use a dummy iframe to prevent redirect * @see https://stackoverflow.com/a/28060195 */</span>
+button<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">\
+&lt;iframe width="0" height="0" border="0" name="dummyframe" id="dummyframe" style="display: none;">&lt;/iframe>
+&lt;form action="</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>buildHookUrl<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">" method="post" target="dummyframe">
+  &lt;button style="font-size: 14px; color: white; height: 24px; background: rgb(46, 170, 220); border: none; border-radius: 3px;">Trigger Site Update&lt;/button>
+&lt;/form></span><span class="token template-punctuation string">`</span></span></span></span></span></code></pre><div id="https://www.notion.so/3f23c780182e4177b775a9a5d3f78f2f" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Create a </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">&lt;div&gt;</code></span><span class="SemanticString">, inside the </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">&lt;div&gt;</code></span><span class="SemanticString"> we have a </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">&lt;form&gt;</code></span><span class="SemanticString">, then we have a </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">&lt;button&gt;</code></span><span class="SemanticString"> in the </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">&lt;form&gt;</code></span><span class="SemanticString">. The </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">&lt;form&gt;</code></span><span class="SemanticString"> has </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">action</code></span><span class="SemanticString"> attribute set to the </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">buildHookUrl</code></span><span class="SemanticString">, which is the webhook URL, and </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">method</code></span><span class="SemanticString"> attribute set to </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">post</code></span><span class="SemanticString">.</span></span></p></div><div id="https://www.notion.so/b64a2c96fb1e47fa81397a2761c4744b" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">This translates to: When we click the button, an empty form will be submit to the URL in </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">action</code></span><span class="SemanticString"> with </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">post</code></span><span class="SemanticString"> method. This is exactly what I want.</span></span></p></div><div id="https://www.notion.so/9ac573f08f9f4f869e440ffd10f3444f" class="Divider"></div><div id="https://www.notion.so/217bf5c17bc64cf7bb3c397f1dda984d" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Wait! What’s the </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">&lt;iframe&gt;</code></span><span class="SemanticString"> doing there?</span></span></p></div><div id="https://www.notion.so/3fccce07f9794513973d9e3e2bbb839e" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Actually, the script works without the </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">&lt;iframe&gt;</code></span><span class="SemanticString">, but in that case after we click the button, we will be redirected to the webhook URL. This behavior is a bit annoying, so I find a way to prevent it, see </span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://stackoverflow.com/a/28060195">https://stackoverflow.com/a/28060195</a></span><span class="SemanticString">.</span></span></p></div><div id="https://www.notion.so/c38ae0e60e944f2a9623f009fc80dafe" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">The </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">&lt;iframe&gt;</code></span><span class="SemanticString"> is not rendered, and the I set </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">target</code></span><span class="SemanticString"> attribute of </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">&lt;form&gt;</code></span><span class="SemanticString"> to the </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">&lt;iframe&gt;</code></span><span class="SemanticString">’s </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">id</code></span><span class="SemanticString">, so the redirect happens in the </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">&lt;iframe&gt;</code></span><span class="SemanticString">, without effecting the main page.</span></span></p></div><h3 id="https://www.notion.so/e682e305d0d14c5da5b04ad2677e5009" class="ColorfulBlock ColorfulBlock--ColorDefault Heading Heading--3"><a class="Anchor" href="#https://www.notion.so/e682e305d0d14c5da5b04ad2677e5009"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span class="SemanticStringArray"><span class="SemanticString">Inject the button to the page</span></span></h3><div id="https://www.notion.so/8109bc59e9dc48df950551edc690f435" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">By default, the browser loads content scripts of an extension after a page is </span><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">loaded</strong></span><span class="SemanticString">. The “</span><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">loaded</strong></span><span class="SemanticString">” means HTML is loaded. This is OK for static web pages, but since Notion is an React app, the parent element we want to inject to </span><span class="SemanticString"><strong class="SemanticString__Fragment SemanticString__Fragment--Bold">may not exist</strong></span><span class="SemanticString"> when HTML is loaded, so we need additional techniques to handle it.</span></span></p></div><div id="https://www.notion.so/35ac118c15e94aecbac2d0cd95632cb9" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">In the past, I used to use </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">DOMSubtreeModified</code></span><span class="SemanticString"> event to trigger my injection logic (</span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://github.com/dragonman225/AlbumArtTool/blob/dcac7a5e58838e80a279f710f7ac8e89da34c7b5/src/extension.js#L186">like this</a></span><span class="SemanticString">), but now this event seems to be completely removed from Firefox 68, so I have to find something new, which is the </span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://developer.mozilla.org/zh-TW/docs/Web/API/MutationObserver"><code class="SemanticString__Fragment SemanticString__Fragment--Code">MutationObserver</code></a></span><span class="SemanticString">.</span></span></p></div><pre id="https://www.notion.so/92586ae5d86a49aabc7978e99e23aaef" class="Code Code--NoWrap"><code><span class="SemanticStringArray"><span class="SemanticString"><span><span class="token comment">/**
+ * Use MutationObserver API, DOMSubtreeModified event is deprecated.
+ * @see https://developer.mozilla.org/zh-TW/docs/Web/API/MutationObserver
+ */</span>
+<span class="token keyword">const</span> observer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MutationObserver</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">mutations</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">/** Try to hook up the button if not exist */</span>
+  <span class="token keyword">let</span> toolbar <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'div.notion-scroller:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2)'</span><span class="token punctuation">)</span>
+  <span class="token keyword">let</span> btn <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token constant">BUTTON_ID</span><span class="token punctuation">)</span>
+  <span class="token comment">/** btn doesn't exists &amp;&amp; toolbar exists */</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>btn <span class="token operator">&amp;&amp;</span> toolbar<span class="token punctuation">)</span> toolbar<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>button<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> observerConfig <span class="token operator">=</span> <span class="token punctuation">{</span>
+  attributes<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  childList<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  characterData<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  subtree<span class="token operator">:</span> <span class="token boolean">true</span>
+<span class="token punctuation">}</span>
+observer<span class="token punctuation">.</span><span class="token function">observe</span><span class="token punctuation">(</span>document<span class="token punctuation">,</span> observerConfig<span class="token punctuation">)</span></span></span></span></code></pre><div id="https://www.notion.so/d2b37292bde5459bb60d83967f2c55d6" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">The </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">MutationObserver</code></span><span class="SemanticString"> behaves the same as </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">DOMSubtreeModified</code></span><span class="SemanticString"> event, if I set </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">subtree: true</code></span><span class="SemanticString"> in the config object.</span></span></p></div><div id="https://www.notion.so/a8ebfbd3072f467fab84ec0cb27e52fa" class="ColorfulBlock ColorfulBlock--ColorDefault Text"><p class="Text__Content"><span class="SemanticStringArray"><span class="SemanticString">Note that here I target </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">document</code></span><span class="SemanticString"> in </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">observe()</code></span><span class="SemanticString">, which seems to be inefficient. But since Notion’s React app is bundled as an </span><span class="SemanticString"><a class="SemanticString__Fragment SemanticString__Fragment--Link" href="https://developer.mozilla.org/en-US/docs/Glossary/IIFE">IIFE</a></span><span class="SemanticString">, which does not expose any variable that can be accessed from outside bundle, also we don’t know how does the app execute. So listening to all mutations in </span><span class="SemanticString"><code class="SemanticString__Fragment SemanticString__Fragment--Code">document</code></span><span class="SemanticString"> makes sure we don’t lose any chance to detect if the page is ready for injection.</span></span></p></div></article>
+  <script src="https://utteranc.es/client.js" repo="dragonman225/dragonman225.github.io"
+    issue-term="pathname" theme="github-light" crossorigin="anonymous" async></script>
+  <footer class="Footer">
+  <div>&copy; Alexander&#39;s Garden 2019-2021</div>
+  <div>&centerdot;</div>
+  <div>Powered by <a href="https://github.com/dragonman225/notablog" target="_blank"
+      rel="noopener noreferrer">Notablog</a>.
+  </div>
+</footer>
+</body>
+
+</html>
