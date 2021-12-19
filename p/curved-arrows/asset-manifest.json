@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/p/curved-arrows/static/css/main.3ee3144a.chunk.css",
+    "main.js": "/p/curved-arrows/static/js/main.83d48375.chunk.js",
+    "main.js.map": "/p/curved-arrows/static/js/main.83d48375.chunk.js.map",
+    "runtime-main.js": "/p/curved-arrows/static/js/runtime-main.5ed59517.js",
+    "runtime-main.js.map": "/p/curved-arrows/static/js/runtime-main.5ed59517.js.map",
+    "static/js/2.205c28a3.chunk.js": "/p/curved-arrows/static/js/2.205c28a3.chunk.js",
+    "static/js/2.205c28a3.chunk.js.map": "/p/curved-arrows/static/js/2.205c28a3.chunk.js.map",
+    "index.html": "/p/curved-arrows/index.html",
+    "static/css/main.3ee3144a.chunk.css.map": "/p/curved-arrows/static/css/main.3ee3144a.chunk.css.map",
+    "static/js/2.205c28a3.chunk.js.LICENSE.txt": "/p/curved-arrows/static/js/2.205c28a3.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5ed59517.js",
+    "static/js/2.205c28a3.chunk.js",
+    "static/css/main.3ee3144a.chunk.css",
+    "static/js/main.83d48375.chunk.js"
+  ]
+}
