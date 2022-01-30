@@ -1,1 +1,1 @@
-/*! Jade v0.3.6 Copyright (c) Wen-Zhi (Alexander) Wang. All rights reserved. */
+/*! Jade v0.3.7 Copyright (c) Wen-Zhi (Alexander) Wang. All rights reserved. */
