@@ -1,0 +1,1080 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MiniSearch vs FlexSearch Comparison</title>
+    <script src="https://cdn.jsdelivr.net/npm/minisearch@7.2.0/dist/umd/index.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flexsearch@0.8.212/dist/flexsearch.bundle.min.js"></script>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background: #f5f5f5;
+        padding: 20px;
+        color: #333;
+      }
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #222;
+      }
+      .search-container {
+        max-width: 1200px;
+        margin: 0 auto 20px;
+      }
+      .search-input {
+        width: 100%;
+        padding: 15px 20px;
+        font-size: 18px;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        outline: none;
+        transition: border-color 0.2s;
+      }
+      .search-input:focus {
+        border-color: #4a90d9;
+      }
+      .stats {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #666;
+      }
+      .comparison {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .engine {
+        background: white;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+      .engine h2 {
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #eee;
+      }
+      .engine h2.minisearch {
+        color: #e74c3c;
+      }
+      .engine h2.flexsearch {
+        color: #3498db;
+      }
+      .meta {
+        font-size: 13px;
+        color: #888;
+        margin-bottom: 15px;
+      }
+      .results {
+        max-height: 70vh;
+        overflow-y: auto;
+      }
+      .result-item {
+        padding: 12px;
+        margin-bottom: 10px;
+        background: #f9f9f9;
+        border-radius: 6px;
+        border-left: 3px solid #ddd;
+      }
+      .result-item.minisearch {
+        border-left-color: #e74c3c;
+      }
+      .result-item.flexsearch {
+        border-left-color: #3498db;
+      }
+      .result-id {
+        font-size: 11px;
+        color: #999;
+        margin-bottom: 4px;
+      }
+      .result-title {
+        font-weight: 600;
+        margin-bottom: 6px;
+        color: #333;
+      }
+      .result-content {
+        font-size: 13px;
+        color: #555;
+        line-height: 1.5;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .result-score {
+        font-size: 11px;
+        color: #888;
+        margin-top: 6px;
+      }
+      mark {
+        background: #fff3cd;
+        padding: 1px 0px;
+        border-radius: 2px;
+        color: #333;
+      }
+      .no-results {
+        text-align: center;
+        padding: 40px;
+        color: #999;
+      }
+      .timing {
+        font-size: 12px;
+        color: #666;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🔍 MiniSearch vs FlexSearch Comparison</h1>
+    <div class="search-container">
+      <input
+        type="text"
+        class="search-input"
+        id="searchInput"
+        placeholder="Type to search... (supports English, Chinese, Japanese)"
+      />
+    </div>
+    <div class="stats" id="stats"></div>
+    <div class="comparison">
+      <div class="engine">
+        <h2 class="minisearch">MiniSearch</h2>
+        <div class="timing" id="minisearchTiming"></div>
+        <div class="results" id="minisearchResults"></div>
+      </div>
+      <div class="engine">
+        <h2 class="flexsearch">FlexSearch</h2>
+        <div class="timing" id="flexsearchTiming"></div>
+        <div class="results" id="flexsearchResults"></div>
+      </div>
+    </div>
+
+    <script>
+      // Generate 100 documents with mixed languages
+      // Hard-coded realistic documents with natural sentences
+      const documents = [
+        // English documents (1-34)
+        {
+          id: 1,
+          title: "Modern Web Development Guide",
+          content:
+            "Web development has evolved significantly over the past decade. Modern frameworks like React, Vue, and Angular have transformed how we build user interfaces. Developers now focus on component-based architecture, which promotes code reusability and maintainability. The rise of TypeScript has brought type safety to JavaScript projects, reducing runtime errors and improving developer experience. Progressive web applications combine the best of web and mobile platforms, offering offline capabilities and native-like experiences.",
+          language: "en",
+        },
+        {
+          id: 2,
+          title: "Cloud Architecture Patterns",
+          content:
+            "Cloud computing has revolutionized how organizations deploy and scale their applications. Microservices architecture enables teams to develop, deploy, and scale services independently. Container orchestration with Kubernetes has become the standard for managing distributed systems. Serverless computing abstracts away infrastructure management, allowing developers to focus purely on business logic. Event-driven architectures enable loose coupling between services, improving system resilience and scalability.",
+          language: "en",
+        },
+        {
+          id: 3,
+          title: "AI and Machine Learning Fundamentals",
+          content:
+            "Artificial intelligence and machine learning are transforming industries across the globe. Neural networks, inspired by biological brains, power many modern AI applications. Deep learning has achieved remarkable success in image recognition, natural language processing, and game playing. Supervised learning requires labeled training data, while unsupervised learning discovers hidden patterns in unlabeled datasets. Reinforcement learning enables agents to learn optimal behaviors through interaction with their environment.",
+          language: "en",
+        },
+        {
+          id: 4,
+          title: "Software Engineering Best Practices",
+          content:
+            "Software engineering encompasses more than just writing code. Version control systems like Git enable collaborative development and maintain project history. Code reviews improve code quality and facilitate knowledge sharing among team members. Continuous integration ensures that code changes are regularly merged and tested. Technical debt management requires balancing short-term delivery pressures with long-term code maintainability. Documentation serves as a crucial reference for current and future team members.",
+          language: "en",
+        },
+        {
+          id: 5,
+          title: "Database Design Principles",
+          content:
+            "Proper database design is fundamental to application performance and data integrity. Relational databases organize data into tables with defined relationships, ensuring consistency through ACID properties. Normalization reduces data redundancy and improves storage efficiency. Indexing strategies significantly impact query performance, especially for large datasets. NoSQL databases offer flexible schemas and horizontal scalability for specific use cases. Database migrations must be carefully planned to avoid downtime in production systems.",
+          language: "en",
+        },
+        {
+          id: 6,
+          title: "Network Security Essentials",
+          content:
+            "Network security protects organizational assets from unauthorized access and cyber threats. Firewalls serve as the first line of defense, filtering traffic based on predefined rules. Encryption ensures data confidentiality during transmission and storage. Intrusion detection systems monitor network traffic for suspicious activities. Zero-trust architecture assumes no implicit trust, requiring verification for every access request. Regular security audits help identify vulnerabilities before they can be exploited by attackers.",
+          language: "en",
+        },
+        {
+          id: 7,
+          title: "Agile Project Management",
+          content:
+            "Agile methodology emphasizes iterative development and continuous feedback. Scrum frameworks organize work into time-boxed sprints, typically lasting two weeks. Daily standup meetings keep team members aligned on progress and obstacles. Product backlogs prioritize features based on business value and customer needs. Retrospectives enable teams to reflect on their processes and identify improvement opportunities. Agile teams embrace change, adapting to evolving requirements throughout the project lifecycle.",
+          language: "en",
+        },
+        {
+          id: 8,
+          title: "DevOps Implementation Strategy",
+          content:
+            "DevOps bridges the gap between development and operations teams. Infrastructure as code enables reproducible and version-controlled infrastructure deployments. Continuous delivery pipelines automate the path from code commit to production release. Monitoring and observability provide insights into system health and performance. Incident management processes ensure rapid response to service disruptions. Culture change is essential for successful DevOps adoption, promoting collaboration and shared responsibility.",
+          language: "en",
+        },
+        {
+          id: 9,
+          title: "Mobile App Development Trends",
+          content:
+            "Mobile development continues to evolve with new technologies and user expectations. Cross-platform frameworks like Flutter and React Native enable code sharing between iOS and Android. Native development provides optimal performance and access to platform-specific features. Progressive web apps offer an alternative approach, running in browsers while providing app-like experiences. App store optimization helps applications gain visibility in crowded marketplaces. Mobile security requires attention to data protection and secure authentication mechanisms.",
+          language: "en",
+        },
+        {
+          id: 10,
+          title: "Data Science Methodology",
+          content:
+            "Data science combines statistical analysis, machine learning, and domain expertise. Data collection and cleaning often consume the majority of a data scientist's time. Exploratory data analysis reveals patterns and guides feature engineering decisions. Model selection depends on the problem type, data characteristics, and interpretability requirements. Cross-validation provides reliable estimates of model performance on unseen data. Communication skills are essential for translating technical findings into actionable business recommendations.",
+          language: "en",
+        },
+        {
+          id: 11,
+          title: "API Design Standards",
+          content:
+            "Well-designed APIs enable seamless integration between systems and services. RESTful APIs leverage HTTP methods to perform CRUD operations on resources. GraphQL provides flexible querying capabilities, allowing clients to request exactly the data they need. API versioning strategies ensure backward compatibility while enabling evolution. Rate limiting protects services from abuse and ensures fair resource allocation. Comprehensive documentation accelerates developer adoption and reduces integration friction.",
+          language: "en",
+        },
+        {
+          id: 12,
+          title: "Microservices Architecture Guide",
+          content:
+            "Microservices architecture decomposes applications into small, independently deployable services. Each service owns its data and communicates through well-defined APIs. Service discovery enables dynamic location of service instances in distributed environments. Circuit breakers prevent cascade failures when downstream services become unavailable. Distributed tracing helps debug issues across service boundaries. Containerization simplifies deployment and ensures consistent runtime environments.",
+          language: "en",
+        },
+        {
+          id: 13,
+          title: "Frontend Performance Optimization",
+          content:
+            "Frontend performance directly impacts user experience and business metrics. Code splitting reduces initial bundle sizes by loading code on demand. Image optimization and lazy loading decrease page load times significantly. Caching strategies minimize redundant network requests and server processing. Critical rendering path optimization ensures fast visual page completion. Performance monitoring tools help identify bottlenecks and track improvements over time.",
+          language: "en",
+        },
+        {
+          id: 14,
+          title: "Backend System Design",
+          content:
+            "Backend systems handle business logic, data processing, and API serving. Load balancing distributes traffic across multiple servers for scalability and reliability. Database connection pooling optimizes resource utilization in high-concurrency scenarios. Caching layers reduce database load and improve response times. Message queues enable asynchronous processing and service decoupling. Horizontal scaling adds capacity by deploying additional server instances.",
+          language: "en",
+        },
+        {
+          id: 15,
+          title: "Testing Automation Framework",
+          content:
+            "Automated testing ensures software quality while accelerating development cycles. Unit tests verify individual components in isolation using mocked dependencies. Integration tests validate interactions between components and external systems. End-to-end tests simulate real user workflows through the entire application. Test-driven development writes tests before implementation, guiding design decisions. Continuous testing integrates automated tests into the development pipeline for rapid feedback.",
+          language: "en",
+        },
+        {
+          id: 16,
+          title: "Continuous Integration Pipeline",
+          content:
+            "Continuous integration automates the process of merging and testing code changes. Version control hooks trigger pipeline execution on every commit. Build stages compile code, run tests, and generate artifacts. Artifact repositories store versioned build outputs for deployment. Notification systems alert teams to build failures requiring attention. Pipeline analytics provide insights into build health and development velocity.",
+          language: "en",
+        },
+        {
+          id: 17,
+          title: "User Experience Design",
+          content:
+            "User experience design focuses on creating intuitive and enjoyable product interactions. User research uncovers needs, behaviors, and pain points through interviews and observations. Information architecture organizes content for findability and comprehension. Wireframes and prototypes visualize design concepts before implementation. Usability testing validates designs with real users and identifies improvement opportunities. Accessibility considerations ensure products work for users with disabilities.",
+          language: "en",
+        },
+        {
+          id: 18,
+          title: "Scalable System Architecture",
+          content:
+            "Scalable systems handle growing loads without fundamental architecture changes. Stateless services enable horizontal scaling without session affinity concerns. Database sharding distributes data across multiple servers for capacity and performance. Read replicas offload query traffic from primary database instances. Caching strategies reduce backend load and improve response times. Auto-scaling adjusts capacity based on demand metrics and thresholds.",
+          language: "en",
+        },
+        {
+          id: 19,
+          title: "Code Quality Standards",
+          content:
+            "Code quality impacts maintainability, reliability, and team productivity. Consistent code formatting improves readability and reduces merge conflicts. Static analysis tools detect potential bugs and style violations automatically. Code complexity metrics identify areas requiring refactoring attention. Technical documentation explains architectural decisions and system behavior. Pair programming promotes knowledge sharing and real-time code review.",
+          language: "en",
+        },
+        {
+          id: 20,
+          title: "Technical Documentation Guide",
+          content:
+            "Technical documentation serves developers, operators, and end users. API documentation describes endpoints, parameters, and response formats. Architecture decision records capture the rationale behind significant design choices. Runbooks provide step-by-step procedures for operational tasks. User guides help end users accomplish their goals with the software. Documentation should be versioned alongside code to maintain accuracy.",
+          language: "en",
+        },
+        {
+          id: 21,
+          title: "Introduction to Programming",
+          content:
+            "Programming is the art of instructing computers to perform specific tasks. Variables store data values that can be manipulated during program execution. Control structures like loops and conditionals determine program flow. Functions encapsulate reusable logic, promoting code organization and modularity. Debugging skills help identify and fix errors in program logic. Practice and persistence are essential for developing programming proficiency.",
+          language: "en",
+        },
+        {
+          id: 22,
+          title: "JavaScript for Beginners",
+          content:
+            "JavaScript is a versatile programming language for web development. Variables declared with let and const provide block-scoped storage. Functions are first-class objects that can be assigned to variables and passed as arguments. Arrow functions offer concise syntax and lexical this binding. Asynchronous programming with promises and async/await handles operations that take time to complete. The Document Object Model enables JavaScript to interact with web page elements.",
+          language: "en",
+        },
+        {
+          id: 23,
+          title: "Python Programming Basics",
+          content:
+            "Python is known for its readable syntax and extensive standard library. Indentation defines code blocks, enforcing consistent formatting. Lists, dictionaries, and sets provide built-in data structures for various use cases. List comprehensions offer concise syntax for creating lists based on existing sequences. Modules and packages enable code organization and reuse across projects. The Python ecosystem includes libraries for web development, data science, and automation.",
+          language: "en",
+        },
+        {
+          id: 24,
+          title: "Version Control with Git",
+          content:
+            "Git enables distributed version control for tracking code changes. Repositories store project files and their complete revision history. Branching allows parallel development of features without affecting the main codebase. Merging combines changes from different branches, requiring conflict resolution when changes overlap. Remote repositories facilitate collaboration by sharing code between team members. Commit messages document the purpose of each change for future reference.",
+          language: "en",
+        },
+        {
+          id: 25,
+          title: "Understanding REST APIs",
+          content:
+            "REST APIs provide standardized interfaces for web services. Resources are identified by URLs and manipulated through HTTP methods. GET requests retrieve resource representations without side effects. POST requests create new resources with submitted data. PUT and PATCH requests update existing resources with different granularity. DELETE requests remove resources from the server. HTTP status codes communicate operation outcomes to clients.",
+          language: "en",
+        },
+        {
+          id: 26,
+          title: "Introduction to Docker",
+          content:
+            "Docker containerizes applications for consistent deployment across environments. Images serve as templates for creating containers with all necessary dependencies. Dockerfiles define image build instructions for reproducible container creation. Volumes persist data beyond container lifecycles for stateful applications. Networks enable communication between containers while providing isolation. Docker Compose orchestrates multi-container applications with declarative configuration.",
+          language: "en",
+        },
+        {
+          id: 27,
+          title: "Kubernetes Fundamentals",
+          content:
+            "Kubernetes orchestrates container deployment across clusters of machines. Pods are the smallest deployable units, containing one or more containers. Deployments manage replica sets and rolling updates for stateless applications. Services provide stable network endpoints for accessing pods. ConfigMaps and Secrets externalize configuration and sensitive data. Ingress controllers route external traffic to services based on host and path rules.",
+          language: "en",
+        },
+        {
+          id: 28,
+          title: "SQL Query Fundamentals",
+          content:
+            "SQL provides powerful tools for querying relational databases. SELECT statements retrieve data from one or more tables. WHERE clauses filter rows based on specified conditions. JOIN operations combine data from related tables. GROUP BY clauses aggregate data for summary reporting. Subqueries nest queries within queries for complex data retrieval. Indexes accelerate query performance by enabling efficient data access paths.",
+          language: "en",
+        },
+        {
+          id: 29,
+          title: "NoSQL Database Overview",
+          content:
+            "NoSQL databases address specific limitations of relational databases. Document databases store flexible JSON-like documents with varying schemas. Key-value stores provide simple, high-performance data access patterns. Column-family databases excel at analytical queries over large datasets. Graph databases model complex relationships between entities. Each NoSQL type offers distinct trade-offs in consistency, availability, and partition tolerance.",
+          language: "en",
+        },
+        {
+          id: 30,
+          title: "Cybersecurity Principles",
+          content:
+            "Cybersecurity protects systems, networks, and data from digital attacks. The CIA triad defines core security goals: confidentiality, integrity, and availability. Authentication verifies user identity through various credential types. Authorization determines what authenticated users can access. Vulnerability management identifies and addresses security weaknesses. Security awareness training helps employees recognize and respond to threats.",
+          language: "en",
+        },
+        {
+          id: 31,
+          title: "Data Visualization Techniques",
+          content:
+            "Data visualization communicates insights through graphical representations. Charts and graphs make patterns and trends easier to understand. Color choices impact readability and accessibility of visualizations. Interactive visualizations enable exploration of complex datasets. Dashboard design aggregates multiple visualizations for comprehensive monitoring. Storytelling with data guides audiences through analytical narratives.",
+          language: "en",
+        },
+        {
+          id: 32,
+          title: "Responsive Web Design",
+          content:
+            "Responsive design ensures websites adapt to various screen sizes. Media queries apply different styles based on device characteristics. Flexible grids use relative units for layout proportions. Responsive images adjust size and resolution for optimal display. Mobile-first design starts with small screens and progressively enhances for larger displays. Testing across devices validates responsive behavior in real-world conditions.",
+          language: "en",
+        },
+        {
+          id: 33,
+          title: "Introduction to GraphQL",
+          content:
+            "GraphQL provides a flexible query language for APIs. Clients request exactly the data they need, avoiding over-fetching. Schema definition language describes available types and operations. Queries retrieve data while mutations modify server-side state. Resolvers connect schema fields to data sources. GraphQL subscriptions enable real-time updates through WebSocket connections.",
+          language: "en",
+        },
+        {
+          id: 34,
+          title: "Software Testing Types",
+          content:
+            "Different testing types verify various aspects of software quality. Functional testing validates that features work as specified. Performance testing measures system behavior under load conditions. Security testing identifies vulnerabilities that could be exploited. Usability testing evaluates how easily users accomplish their goals. Regression testing ensures new changes do not break existing functionality.",
+          language: "en",
+        },
+        // Traditional Chinese documents (35-66)
+        {
+          id: 35,
+          title: "現代軟體開發指南",
+          content:
+            "軟體開發在過去十年中經歷了顯著的變化。現代框架如 React、Vue 和 Angular 改變了我們構建使用者介面的方式。開發者現在專注於元件化架構，這促進了程式碼的重用性和可維護性。TypeScript 的興起為 JavaScript 專案帶來了型別安全，減少了執行時錯誤並改善了開發者體驗。漸進式網頁應用程式結合了網頁和行動平台的優點，提供離線功能和類似原生的體驗。",
+          language: "zh",
+        },
+        {
+          id: 36,
+          title: "雲端運算架構模式",
+          content:
+            "雲端運算徹底改變了組織部署和擴展應用程式的方式。微服務架構使團隊能夠獨立開發、部署和擴展服務。使用 Kubernetes 的容器編排已成為管理分散式系統的標準。無伺服器運算抽象化了基礎設施管理，讓開發者能夠純粹專注於業務邏輯。事件驅動架構實現了服務之間的鬆耦合，提高了系統的彈性和可擴展性。",
+          language: "zh",
+        },
+        {
+          id: 37,
+          title: "人工智慧基礎教程",
+          content:
+            "人工智慧和機器學習正在改變全球各個產業。類神經網路受到生物大腦的啟發，為許多現代人工智慧應用提供動力。深度學習在影像辨識、自然語言處理和遊戲對弈方面取得了顯著成功。監督式學習需要標記的訓練資料，而非監督式學習則在未標記的資料集中發現隱藏的模式。強化學習使代理程式能夠透過與環境互動來學習最佳行為。",
+          language: "zh",
+        },
+        {
+          id: 38,
+          title: "軟體工程最佳實踐",
+          content:
+            "軟體工程涵蓋的不僅僅是撰寫程式碼。版本控制系統如 Git 能夠實現協作開發並維護專案歷史。程式碼審查提高程式碼品質並促進團隊成員之間的知識分享。持續整合確保程式碼變更能夠定期合併和測試。技術債務管理需要在短期交付壓力和長期程式碼可維護性之間取得平衡。文件作為現有和未來團隊成員的重要參考。",
+          language: "zh",
+        },
+        {
+          id: 39,
+          title: "資料庫設計原理",
+          content:
+            "正確的資料庫設計對應用程式效能和資料完整性至關重要。關聯式資料庫將資料組織到具有已定義關聯的表格中，透過 ACID 特性確保一致性。正規化減少資料冗餘並提高儲存效率。索引策略顯著影響查詢效能，特別是對於大型資料集。NoSQL 資料庫為特定使用案例提供彈性架構和水平擴展能力。資料庫遷移必須仔細規劃，以避免生產系統的停機時間。",
+          language: "zh",
+        },
+        {
+          id: 40,
+          title: "網路安全要點",
+          content:
+            "網路安全保護組織資產免受未經授權的存取和網路威脅。防火牆作為第一道防線，根據預定義規則過濾流量。加密確保資料在傳輸和儲存過程中的機密性。入侵偵測系統監控網路流量中的可疑活動。零信任架構假設沒有隱含信任，要求對每個存取請求進行驗證。定期安全稽核有助於在漏洞被攻擊者利用之前識別它們。",
+          language: "zh",
+        },
+        {
+          id: 41,
+          title: "敏捷專案管理",
+          content:
+            "敏捷方法論強調迭代開發和持續回饋。Scrum 框架將工作組織成時間框定的衝刺，通常持續兩週。每日站立會議讓團隊成員保持對進度和障礙的一致性。產品待辦清單根據業務價值和客戶需求對功能進行優先排序。回顧會議使團隊能夠反思他們的流程並識別改進機會。敏捷團隊擁抱變化，在整個專案生命週期中適應不斷演變的需求。",
+          language: "zh",
+        },
+        {
+          id: 42,
+          title: "DevOps實作策略",
+          content:
+            "DevOps 彌合了開發和維運團隊之間的差距。基礎設施即程式碼實現了可重現和版本控制的基礎設施部署。持續交付流水線自動化了從程式碼提交到生產發布的路徑。監控和可觀察性提供了對系統健康狀況和效能的洞察。事件管理流程確保對服務中斷的快速回應。文化變革對於成功的 DevOps 採用至關重要，促進協作和共同責任。",
+          language: "zh",
+        },
+        {
+          id: 43,
+          title: "行動應用開發趨勢",
+          content:
+            "行動開發隨著新技術和使用者期望不斷演進。跨平台框架如 Flutter 和 React Native 能夠在 iOS 和 Android 之間共享程式碼。原生開發提供最佳效能和對平台特定功能的存取。漸進式網頁應用程式提供了一種替代方法，在瀏覽器中執行同時提供類似應用程式的體驗。應用程式商店最佳化幫助應用程式在擁擠的市場中獲得可見度。行動安全需要注意資料保護和安全認證機制。",
+          language: "zh",
+        },
+        {
+          id: 44,
+          title: "資料科學方法論",
+          content:
+            "資料科學結合了統計分析、機器學習和領域專業知識。資料收集和清理通常佔用資料科學家大部分的時間。探索性資料分析揭示模式並指導特徵工程決策。模型選擇取決於問題類型、資料特性和可解釋性要求。交叉驗證提供了模型在未見資料上效能的可靠估計。溝通技巧對於將技術發現轉化為可操作的業務建議至關重要。",
+          language: "zh",
+        },
+        {
+          id: 45,
+          title: "API設計標準",
+          content:
+            "設計良好的 API 能夠實現系統和服務之間的無縫整合。RESTful API 利用 HTTP 方法對資源執行 CRUD 操作。GraphQL 提供彈性的查詢功能，允許客戶端精確請求所需的資料。API 版本控制策略確保向後相容性同時實現演進。速率限制保護服務免受濫用並確保公平的資源分配。全面的文件加速開發者採用並減少整合摩擦。",
+          language: "zh",
+        },
+        {
+          id: 46,
+          title: "微服務架構指南",
+          content:
+            "微服務架構將應用程式分解為小型、獨立部署的服務。每個服務擁有自己的資料並透過定義良好的 API 進行通訊。服務發現使分散式環境中的服務實例能夠動態定位。斷路器在下遊服務變得不可用時防止級聯故障。分散式追蹤幫助跨服務邊界除錯問題。容器化簡化了部署並確保一致的執行時環境。",
+          language: "zh",
+        },
+        {
+          id: 47,
+          title: "前端效能最佳化",
+          content:
+            "前端效能直接影響使用者體驗和業務指標。程式碼分割透過按需載入程式碼來減少初始套件大小。影像最佳化和延遲載入顯著減少頁面載入時間。快取策略最小化冗餘的網路請求和伺服器處理。關鍵渲染路徑最佳化確保快速的視覺頁面完成。效能監控工具幫助識別瓶頸並追蹤隨時間的改進。",
+          language: "zh",
+        },
+        {
+          id: 48,
+          title: "後端系統設計",
+          content:
+            "後端系統處理業務邏輯、資料處理和 API 服務。負載平衡將流量分配到多個伺服器以實現可擴展性和可靠性。資料庫連線池在高並發場景中最佳化資源利用。快取層減少資料庫負載並改善回應時間。訊息佇列實現非同步處理和服務解耦。水平擴展透過部署額外的伺服器實例來增加容量。",
+          language: "zh",
+        },
+        {
+          id: 49,
+          title: "測試自動化框架",
+          content:
+            "自動化測試確保軟體品質同時加速開發週期。單元測試使用模擬相依性在隔離環境中驗證個別元件。整合測試驗證元件和外部系統之間的互動。端對端測試透過整個應用程式模擬真實使用者工作流程。測試驅動開發在實作之前撰寫測試，指導設計決策。持續測試將自動化測試整合到開發流水線中以獲得快速回饋。",
+          language: "zh",
+        },
+        {
+          id: 50,
+          title: "持續整合流水線",
+          content:
+            "持續整合自動化了合併和測試程式碼變更的過程。版本控制掛鉤在每次提交時觸發流水線執行。建置階段編譯程式碼、執行測試並產生製品。製品儲存庫儲存版本化的建置輸出以供部署。通知系統提醒團隊需要注意的建置失敗。流水線分析提供建置健康狀況和開發速度的洞察。",
+          language: "zh",
+        },
+        {
+          id: 51,
+          title: "使用者體驗設計",
+          content:
+            "使用者體驗設計專注於創造直覺和愉悅的產品互動。使用者研究透過訪談和觀察揭示需求、行為和痛點。資訊架構組織內容以提高可尋性和可理解性。線框圖和原型在實作之前視覺化設計概念。易用性測試與真實使用者驗證設計並識別改進機會。無障礙考量確保產品對殘障使用者也能正常運作。",
+          language: "zh",
+        },
+        {
+          id: 52,
+          title: "可擴展系統架構",
+          content:
+            "可擴展系統在無需根本架構變更的情況下處理不斷增長的負載。無狀態服務實現水平擴展而無需會話親和性問題。資料庫分片將資料分配到多個伺服器以提高容量和效能。讀取複本從主資料庫實例卸載查詢流量。快取策略減少後端負載並改善回應時間。自動擴展根據需求指標和閾值調整容量。",
+          language: "zh",
+        },
+        {
+          id: 53,
+          title: "程式碼品質標準",
+          content:
+            "程式碼品質影響可維護性、可靠性和團隊生產力。一致的程式碼格式提高可讀性並減少合併衝突。靜態分析工具自動檢測潛在錯誤和樣式違規。程式碼複雜度指標識別需要重構關注的區域。技術文件解釋架構決策和系統行為。配對程式設計促進知識分享和即時程式碼審查。",
+          language: "zh",
+        },
+        {
+          id: 54,
+          title: "技術文件指南",
+          content:
+            "技術文件服務於開發者、維運人員和終端使用者。API 文件描述端點、參數和回應格式。架構決策記錄捕捉重要設計選擇背後的理由。執行手冊提供維運任務的逐步程序。使用者指南幫助終端使用者使用軟體達成目標。文件應與程式碼一起版本化以保持準確性。",
+          language: "zh",
+        },
+        {
+          id: 55,
+          title: "程式設計入門",
+          content:
+            "程式設計是指示電腦執行特定任務的藝術。變數儲存可以在程式執行期間操作的資料值。控制結構如迴圈和條件判斷決定程式流程。函式封裝可重用的邏輯，促進程式碼組織和模組化。除錯技巧幫助識別和修復程式邏輯中的錯誤。練習和堅持對於發展程式設計能力至關重要。",
+          language: "zh",
+        },
+        {
+          id: 56,
+          title: "JavaScript 初學者指南",
+          content:
+            "JavaScript 是一種用於網頁開發的多功能程式語言。使用 let 和 const 宣告的變數提供區塊範圍的儲存。函式是一等物件，可以指定給變數並作為引數傳遞。箭頭函式提供簡潔的語法和詞法 this 繫結。使用 Promise 和 async/await 的非同步程式設計處理需要時間完成的操作。文件物件模型使 JavaScript 能夠與網頁元素互動。",
+          language: "zh",
+        },
+        {
+          id: 57,
+          title: "Python 程式設計基礎",
+          content:
+            "Python 以其可讀的語法和廣泛的標準函式庫而聞名。縮排定義程式碼區塊，強制一致的格式化。串列、字典和集合為各種使用案例提供內建資料結構。串列推導式提供基於現有序列建立串列的簡潔語法。模組和套件實現跨專案的程式碼組織和重用。Python 生態系統包括用於網頁開發、資料科學和自動化的函式庫。",
+          language: "zh",
+        },
+        {
+          id: 58,
+          title: "Git 版本控制",
+          content:
+            "Git 實現了用於追蹤程式碼變更的分散式版本控制。儲存庫儲存專案檔案及其完整的修訂歷史。分支允許功能的不影響主程式碼庫的平行開發。合併結合來自不同分支的變更，當變更重疊時需要解決衝突。遠端儲存庫透過在團隊成員之間共享程式碼來促進協作。提交訊息記錄每次變更的目的以供未來參考。",
+          language: "zh",
+        },
+        {
+          id: 59,
+          title: "REST API 概念",
+          content:
+            "REST API 為網頁服務提供標準化介面。資源由 URL 識別並透過 HTTP 方法操作。GET 請求檢索資源表示而不產生副作用。POST 請求使用提交的資料建立新資源。PUT 和 PATCH 請求以不同的精細度更新現有資源。DELETE 請求從伺服器移除資源。HTTP 狀態碼向客戶端傳達操作結果。",
+          language: "zh",
+        },
+        {
+          id: 60,
+          title: "Docker 容器化技術",
+          content:
+            "Docker 將應用程式容器化以便在不同環境中一致部署。映像檔作為建立包含所有必要相依性的容器的範本。Dockerfile 定義映像檔建置指令以實現可重現的容器建立。磁碟區在容器生命週期之外持久化資料以用於有狀態應用程式。網路實現容器之間的通訊同時提供隔離。Docker Compose 使用宣告式設定編排多容器應用程式。",
+          language: "zh",
+        },
+        {
+          id: 61,
+          title: "Kubernetes 基礎知識",
+          content:
+            "Kubernetes 跨機器叢集編排容器部署。Pod 是最小的可部署單元，包含一個或多個容器。部署管理無狀態應用程式的複本集和滾動更新。服務為存取 Pod 提供穩定的網路端點。ConfigMap 和 Secret 將設定和敏感資料外部化。Ingress 控制器根據主機和路徑規則將外部流量路由到服務。",
+          language: "zh",
+        },
+        {
+          id: 62,
+          title: "SQL 查詢基礎",
+          content:
+            "SQL 提供查詢關聯式資料庫的強大工具。SELECT 陳述式從一個或多個表格檢索資料。WHERE 子句根據指定條件過濾列。JOIN 操作結合來自相關表格的資料。GROUP BY 子句彙總資料以進行摘要報告。子查詢在查詢中巢狀查詢以進行複雜的資料檢索。索引透過啟用高效的資料存取路徑來加速查詢效能。",
+          language: "zh",
+        },
+        {
+          id: 63,
+          title: "NoSQL 資料庫概覽",
+          content:
+            "NoSQL 資料庫解決關聯式資料庫的特定限制。文件資料庫儲存具有不同架構的彈性 JSON 類文件。鍵值儲存提供簡單、高效能的資料存取模式。列族資料庫擅長對大型資料集的分析查詢。圖形資料庫建模實體之間的複雜關聯。每種 NoSQL 類型在一致性、可用性和分區容錯方面提供不同的權衡。",
+          language: "zh",
+        },
+        {
+          id: 64,
+          title: "網路安全原則",
+          content:
+            "網路安全保護系統、網路和資料免受數位攻擊。CIA 三要素定義核心安全目標：機密性、完整性和可用性。認證透過各種憑證類型驗證使用者身份。授權決定已認證使用者可以存取什麼。漏洞管理識別和解決安全弱點。安全意識訓練幫助員工識別和回應威脅。",
+          language: "zh",
+        },
+        {
+          id: 65,
+          title: "資料視覺化技術",
+          content:
+            "資料視覺化透過圖形表示傳達洞察。圖表和圖形使模式和趨勢更容易理解。顏色選擇影響視覺化的可讀性和無障礙性。互動式視覺化實現複雜資料集的探索。儀表板設計彙總多個視覺化以進行全面監控。資料敘事引導觀眾透過分析敘述。",
+          language: "zh",
+        },
+        {
+          id: 66,
+          title: "響應式網頁設計",
+          content:
+            "響應式設計確保網站適應各種螢幕大小。媒體查詢根據裝置特性應用不同的樣式。彈性網格使用相對單位進行版面配置比例。響應式影像調整大小和解析度以獲得最佳顯示。行動優先設計從小螢幕開始，逐步增強為更大的顯示。跨裝置測試在實際條件下驗證響應式行為。",
+          language: "zh",
+        },
+        // Japanese documents (67-100)
+        {
+          id: 67,
+          title: "モダンWeb開発ガイド",
+          content:
+            "Web開発は過去10年間で大きく進化しました。React、Vue、Angularなどのモダンなフレームワークは、ユーザーインターフェースの構築方法を変革しました。開発者は現在、コンポーネントベースのアーキテクチャに注力しており、これによりコードの再利用性と保守性が向上しています。TypeScriptの台頭により、JavaScriptプロジェクトに型安全性がもたらされ、ランタイムエラーが減少し、開発者体験が改善されました。プログレッシブWebアプリケーションは、Webとモバイルプラットフォームの長所を組み合わせ、オフライン機能とネイティブのような体験を提供します。",
+          language: "ja",
+        },
+        {
+          id: 68,
+          title: "クラウドアーキテクチャパターン",
+          content:
+            "クラウドコンピューティングは、組織がアプリケーションをデプロイしスケーリングする方法を革新しました。マイクロサービスアーキテクチャにより、チームはサービスを独立して開発、デプロイ、スケーリングできます。Kubernetesによるコンテナオーケストレーションは、分散システム管理の標準となっています。サーバーレスコンピューティングはインフラ管理を抽象化し、開発者が純粋にビジネスロジックに集中できるようにします。イベント駆動アーキテクチャは、サービス間の疎結合を実現し、システムの回復力とスケーラビリティを向上させます。",
+          language: "ja",
+        },
+        {
+          id: 69,
+          title: "AIと機械学習の基礎",
+          content:
+            "人工知能と機械学習は、世界中の産業を変革しています。生物学的な脳に着想を得たニューラルネットワークは、多くの現代的なAIアプリケーションを支えています。ディープラーニングは、画像認識、自然言語処理、ゲームプレイにおいて顕著な成功を収めています。教師あり学習はラベル付きの訓練データを必要とし、教師なし学習はラベルなしのデータセットから隠れたパターンを発見します。強化学習により、エージェントは環境との相互作用を通じて最適な行動を学習できます。",
+          language: "ja",
+        },
+        {
+          id: 70,
+          title: "ソフトウェアエンジニアリングベストプラクティス",
+          content:
+            "ソフトウェアエンジニアリングは、単にコードを書くこと以上のことを含みます。Gitのようなバージョン管理システムは、共同開発を可能にし、プロジェクトの履歴を維持します。コードレビューはコード品質を向上させ、チームメンバー間の知識共有を促進します。継続的インテグレーションは、コード変更が定期的にマージされテストされることを保証します。技術的負債の管理は、短期的な納期のプレッシャーと長期的なコード保守性のバランスを取る必要があります。ドキュメントは、現在および将来のチームメンバーの重要な参照として機能します。",
+          language: "ja",
+        },
+        {
+          id: 71,
+          title: "データベース設計原則",
+          content:
+            "適切なデータベース設計は、アプリケーションのパフォーマンスとデータ整合性の基礎です。リレーショナルデータベースは、データを定義された関係を持つテーブルに整理し、ACID特性を通じて一貫性を保証します。正規化はデータの冗長性を削減し、ストレージ効率を向上させます。インデックス作成戦略は、特に大規模なデータセットにおいてクエリパフォーマンスに大きく影響します。NoSQLデータベースは、特定のユースケースに対して柔軟なスキーマと水平スケーラビリティを提供します。データベース移行は、本番システムのダウンタイムを回避するために慎重に計画する必要があります。",
+          language: "ja",
+        },
+        {
+          id: 72,
+          title: "ネットワークセキュリティの基礎",
+          content:
+            "ネットワークセキュリティは、組織の資産を不正アクセスやサイバー脅威から保護します。ファイアウォールは第一線防御として機能し、事前定義されたルールに基づいてトラフィックをフィルタリングします。暗号化は、転送中および保存中のデータの機密性を保証します。侵入検知システムは、ネットワークトラフィックを監視し、疑わしい活動を検出します。ゼロトラストアーキテクチャは暗黙の信頼を前提とせず、すべてのアクセス要求に対して検証を必要とします。定期的なセキュリティ監査は、脆弱性が攻撃者に悪用される前に特定するのに役立ちます。",
+          language: "ja",
+        },
+        {
+          id: 73,
+          title: "アジャイルプロジェクト管理",
+          content:
+            "アジャイル手法は、反復開発と継続的なフィードバックを重視します。スクラムフレームワークは、作業を通常2週間のタイムボックスされたスプリントに整理します。デイリースタンドアップミーティングは、チームメンバーを進捗と障害に合わせます。プロダクトバックログは、ビジネス価値と顧客ニーズに基づいて機能を優先順位付けします。レトロスペクティブにより、チームはプロセスを振り返り、改善の機会を特定できます。アジャイルチームは変化を受け入れ、プロジェクトライフサイクル全体で進化する要件に適応します。",
+          language: "ja",
+        },
+        {
+          id: 74,
+          title: "DevOps実装戦略",
+          content:
+            "DevOpsは開発チームと運用チームの間のギャップを埋めます。Infrastructure as Codeにより、再現可能でバージョン管理されたインフラデプロイが可能になります。継続的デリバリーパイプラインは、コードコミットから本番リリースまでのパスを自動化します。モニタリングとオブザーバビリティは、システムの健全性とパフォーマンスに関する洞察を提供します。インシデント管理プロセスは、サービス中断への迅速な対応を保証します。文化の変革は、DevOps導入の成功に不可欠であり、コラボレーションと共同責任を促進します。",
+          language: "ja",
+        },
+        {
+          id: 75,
+          title: "モバイルアプリ開発トレンド",
+          content:
+            "モバイル開発は、新しい技術とユーザーの期待とともに進化し続けています。FlutterやReact Nativeのようなクロスプラットフォームフレームワークは、iOSとAndroid間でのコード共有を可能にします。ネイティブ開発は、最適なパフォーマンスとプラットフォーム固有機能へのアクセスを提供します。プログレッシブWebアプリは、ブラウザで動作しながらアプリのような体験を提供する代替アプローチです。アプリストア最適化は、混雑したマーケットプレースでのアプリの可視性を高めます。モバイルセキュリティは、データ保護と安全な認証メカニズムへの注意が必要です。",
+          language: "ja",
+        },
+        {
+          id: 76,
+          title: "データサイエンス手法",
+          content:
+            "データサイエンスは、統計分析、機械学習、ドメイン専門知識を組み合わせます。データの収集とクリーニングは、データサイエンティストの時間の大部分を消費することが多いです。探索的データ分析はパターンを明らかにし、特徴エンジニアリングの決定を導きます。モデル選択は、問題タイプ、データ特性、解釈可能性の要件に依存します。クロスバリデーションは、未見のデータに対するモデルパフォーマンスの信頼できる推定を提供します。コミュニケーションスキルは、技術的な発見を実行可能なビジネス推奨に変換するために不可欠です。",
+          language: "ja",
+        },
+        {
+          id: 77,
+          title: "API設計標準",
+          content:
+            "適切に設計されたAPIは、システムとサービス間のシームレスな統合を可能にします。RESTful APIは、HTTPメソッドを活用してリソースに対してCRUD操作を実行します。GraphQLは柔軟なクエリ機能を提供し、クライアントが必要なデータを正確に要求できるようにします。APIバージョニング戦略は、後方互換性を保証しながら進化を可能にします。レート制限は、サービスを悪用から保護し、公正なリソース配分を保証します。包括的なドキュメントは、開発者の採用を加速し、統合の摩擦を削減します。",
+          language: "ja",
+        },
+        {
+          id: 78,
+          title: "マイクロサービスアーキテクチャガイド",
+          content:
+            "マイクロサービスアーキテクチャは、アプリケーションを小さく独立してデプロイ可能なサービスに分解します。各サービスは独自のデータを所有し、明確に定義されたAPIを通じて通信します。サービスディスカバリーは、分散環境でのサービスインスタンスの動的な特定を可能にします。サーキットブレーカーは、下流サービスが利用不可能になったときにカスケード障害を防ぎます。分散トレーシングは、サービス境界を越えた問題のデバッグに役立ちます。コンテナ化はデプロイを簡素化し、一貫したランタイム環境を保証します。",
+          language: "ja",
+        },
+        {
+          id: 79,
+          title: "フロントエンドパフォーマンス最適化",
+          content:
+            "フロントエンドパフォーマンスは、ユーザー体験とビジネスメトリクスに直接影響します。コード分割は、オンデマンドでコードをロードすることで初期バンドルサイズを削減します。画像最適化とレイジーローディングは、ページロード時間を大幅に削減します。キャッシング戦略は、冗長なネットワークリクエストとサーバー処理を最小限に抑えます。クリティカルレンダリングパス最適化は、迅速な視覚的ページ完了を保証します。パフォーマンスモニタリングツールは、ボトルネックを特定し、時間を超えた改善を追跡するのに役立ちます。",
+          language: "ja",
+        },
+        {
+          id: 80,
+          title: "バックエンドシステム設計",
+          content:
+            "バックエンドシステムは、ビジネスロジック、データ処理、APIサービングを処理します。ロードバランシングは、スケーラビリティと信頼性のためにトラフィックを複数のサーバーに分散します。データベース接続プーリングは、高同時実行シナリオでのリソース利用を最適化します。キャッシングレイヤーは、データベース負荷を削減し、応答時間を改善します。メッセージキューは、非同期処理とサービス疎結合を可能にします。水平スケーリングは、追加のサーバーインスタンスをデプロイすることで容量を追加します。",
+          language: "ja",
+        },
+        {
+          id: 81,
+          title: "テスト自動化フレームワーク",
+          content:
+            "自動化テストは、ソフトウェア品質を保証しながら開発サイクルを加速します。ユニットテストは、モックされた依存関係を使用して個々のコンポーネントを分離して検証します。統合テストは、コンポーネントと外部システム間の相互作用を検証します。エンドツーエンドテストは、アプリケーション全体を通じて実際のユーザーワークフローをシミュレートします。テスト駆動開発は、実装の前にテストを書き、設計決定を導きます。継続的テストは、自動化テストを開発パイプラインに統合し、迅速なフィードバックを提供します。",
+          language: "ja",
+        },
+        {
+          id: 82,
+          title: "継続的インテグレーションパイプライン",
+          content:
+            "継続的インテグレーションは、コード変更のマージとテストのプロセスを自動化します。バージョン管理フックは、各コミットでパイプライン実行をトリガーします。ビルドステージは、コードをコンパイルし、テストを実行し、アーティファクトを生成します。アーティファクトリポジトリは、デプロイ用のバージョン管理されたビルド出力を保存します。通知システムは、注意が必要なビルド失敗をチームに警告します。パイプライン分析は、ビルドの健全性と開発速度に関する洞察を提供します。",
+          language: "ja",
+        },
+        {
+          id: 83,
+          title: "ユーザーエクスペリエンスデザイン",
+          content:
+            "ユーザーエクスペリエンスデザインは、直感的で楽しい製品相互作用の作成に注力します。ユーザーリサーチは、インタビューと観察を通じてニーズ、行動、ペインポイントを明らかにします。情報アーキテクチャは、発見可能性と理解可能性のためにコンテンツを整理します。ワイヤーフレームとプロトタイプは、実装前にデザインコンセプトを視覚化します。ユーザビリティテストは、実際のユーザーでデザインを検証し、改善の機会を特定します。アクセシビリティの考慮は、障害を持つユーザーのために製品が動作することを保証します。",
+          language: "ja",
+        },
+        {
+          id: 84,
+          title: "スケーラブルシステムアーキテクチャ",
+          content:
+            "スケーラブルシステムは、基本的なアーキテクチャ変更なしで成長する負荷を処理します。ステートレスサービスは、セッションアフィニティの懸念なしで水平スケーリングを可能にします。データベースシャーディングは、容量とパフォーマンスのためにデータを複数のサーバーに分散します。読み取りレプリカは、プライマリデータベースインスタンスからクエリトラフィックをオフロードします。キャッシング戦略は、バックエンド負荷を削減し、応答時間を改善します。オートスケーリングは、需要メトリクスとしきい値に基づいて容量を調整します。",
+          language: "ja",
+        },
+        {
+          id: 85,
+          title: "コード品質標準",
+          content:
+            "コード品質は、保守性、信頼性、チームの生産性に影響します。一貫したコードフォーマットは、可読性を向上させ、マージコンフリクトを削減します。静的分析ツールは、潜在的なバグとスタイル違反を自動的に検出します。コード複雑度メトリクスは、リファクタリングの注意が必要な領域を特定します。技術ドキュメントは、アーキテクチャ決定とシステム動作を説明します。ペアプログラミングは、知識共有とリアルタイムコードレビューを促進します。",
+          language: "ja",
+        },
+        {
+          id: 86,
+          title: "技術ドキュメントガイド",
+          content:
+            "技術ドキュメントは、開発者、運用者、エンドユーザーにサービスを提供します。APIドキュメントは、エンドポイント、パラメータ、応答形式を説明します。アーキテクチャ決定記録は、重要な設計選択の背後にある根拠を捉えます。ランブックは、運用タスクのステップバイステップ手順を提供します。ユーザーガイドは、エンドユーザーがソフトウェアで目標を達成するのを助けます。ドキュメントは、正確性を維持するためにコードと一緒にバージョン管理されるべきです。",
+          language: "ja",
+        },
+        {
+          id: 87,
+          title: "プログラミング入門",
+          content:
+            "プログラミングは、コンピュータに特定のタスクを実行させる技術です。変数は、プログラム実行中に操作できるデータ値を保存します。ループや条件分岐などの制御構造は、プログラムフローを決定します。関数は再利用可能なロジックをカプセル化し、コードの組織化とモジュール化を促進します。デバッグスキルは、プログラムロジックのエラーを特定し修正するのに役立ちます。練習と粘り強さは、プログラミング能力を開発するために不可欠です。",
+          language: "ja",
+        },
+        {
+          id: 88,
+          title: "JavaScript初学者ガイド",
+          content:
+            "JavaScriptは、Web開発のための多目的プログラミング言語です。letとconstで宣言された変数は、ブロックスコープのストレージを提供します。関数は第一級オブジェクトであり、変数に割り当て、引数として渡すことができます。アロー関数は、簡潔な構文とレキシカルthisバインディングを提供します。Promiseとasync/awaitによる非同期プログラミングは、完了に時間がかかる操作を処理します。ドキュメントオブジェクトモデルにより、JavaScriptはWebページ要素と相互作用できます。",
+          language: "ja",
+        },
+        {
+          id: 89,
+          title: "Pythonプログラミング基礎",
+          content:
+            "Pythonは、読みやすい構文と広範な標準ライブラリで知られています。インデントはコードブロックを定義し、一貫したフォーマットを強制します。リスト、辞書、セットは、様々なユースケースのための組み込みデータ構造を提供します。リスト内包表記は、既存のシーケンスに基づいてリストを作成するための簡潔な構文を提供します。モジュールとパッケージは、プロジェクト間でのコード組織化と再利用を可能にします。Pythonエコシステムには、Web開発、データサイエンス、自動化のためのライブラリが含まれます。",
+          language: "ja",
+        },
+        {
+          id: 90,
+          title: "Gitバージョン管理",
+          content:
+            "Gitは、コード変更を追跡するための分散バージョン管理を可能にします。リポジトリは、プロジェクトファイルとその完全な改訂履歴を保存します。ブランチングは、メインコードベースに影響を与えずに機能の並行開発を可能にします。マージは、異なるブランチからの変更を結合し、変更が重複する場合は競合解決が必要です。リモートリポジトリは、チームメンバー間でコードを共有することでコラボレーションを促進します。コミットメッセージは、将来の参照のために各変更の目的を文書化します。",
+          language: "ja",
+        },
+        {
+          id: 91,
+          title: "REST APIの理解",
+          content:
+            "REST APIは、Webサービスのための標準化されたインターフェースを提供します。リソースはURLで識別され、HTTPメソッドを通じて操作されます。GETリクエストは、副作用なしでリソース表現を取得します。POSTリクエストは、提出されたデータで新しいリソースを作成します。PUTとPATCHリクエストは、異なる粒度で既存のリソースを更新します。DELETEリクエストは、サーバーからリソースを削除します。HTTPステータスコードは、操作結果をクライアントに伝達します。",
+          language: "ja",
+        },
+        {
+          id: 92,
+          title: "Docker入門",
+          content:
+            "Dockerは、環境間で一貫したデプロイのためにアプリケーションをコンテナ化します。イメージは、必要な依存関係をすべて含むコンテナを作成するためのテンプレートとして機能します。Dockerfileは、再現可能なコンテナ作成のためのイメージビルド手順を定義します。ボリュームは、ステートフルアプリケーションのためにコンテナライフサイクルを超えてデータを永続化します。ネットワークは、分離を提供しながらコンテナ間の通信を可能にします。Docker Composeは、宣言的設定でマルチコンテナアプリケーションをオーケストレートします。",
+          language: "ja",
+        },
+        {
+          id: 93,
+          title: "Kubernetesの基礎",
+          content:
+            "Kubernetesは、マシンのクラスター全体でコンテナデプロイをオーケストレートします。Podは、1つ以上のコンテナを含む最小のデプロイ可能ユニットです。デプロイメントは、ステートレスアプリケーションのレプリカセットとローリングアップデートを管理します。サービスは、Podにアクセスするための安定したネットワークエンドポイントを提供します。ConfigMapとSecretは、設定と機密データを外部化します。Ingressコントローラーは、ホストとパスルールに基づいて外部トラフィックをサービスにルーティングします。",
+          language: "ja",
+        },
+        {
+          id: 94,
+          title: "SQLクエリの基礎",
+          content:
+            "SQLは、リレーショナルデータベースをクエリするための強力なツールを提供します。SELECTステートメントは、1つ以上のテーブルからデータを取得します。WHERE句は、指定された条件に基づいて行をフィルタリングします。JOIN操作は、関連テーブルからのデータを結合します。GROUP BY句は、サマリーレポートのためにデータを集約します。サブクエリは、複雑なデータ取得のためにクエリ内にクエリをネストします。インデックスは、効率的なデータアクセスパスを可能にすることでクエリパフォーマンスを加速します。",
+          language: "ja",
+        },
+        {
+          id: 95,
+          title: "NoSQLデータベース概要",
+          content:
+            "NoSQLデータベースは、リレーショナルデータベースの特定の制限に対処します。ドキュメントデータベースは、異なるスキーマを持つ柔軟なJSONのようなドキュメントを保存します。キーバリューストアは、シンプルで高性能なデータアクセスパターンを提供します。カラムファミリーデータベースは、大規模データセットに対する分析クエリに優れています。グラフデータベースは、エンティティ間の複雑な関係をモデル化します。各NoSQLタイプは、一貫性、可用性、パーティション耐性において異なるトレードオフを提供します。",
+          language: "ja",
+        },
+        {
+          id: 96,
+          title: "サイバーセキュリティの原則",
+          content:
+            "サイバーセキュリティは、システム、ネットワーク、データをデジタル攻撃から保護します。CIAトライアドは、機密性、完全性、可用性というコアセキュリティ目標を定義します。認証は、様々な資格情報タイプを通じてユーザーIDを検証します。認可は、認証されたユーザーがアクセスできるものを決定します。脆弱性管理は、セキュリティの弱点を特定し対処します。セキュリティ意識向上トレーニングは、従業員が脅威を認識し対応するのに役立ちます。",
+          language: "ja",
+        },
+        {
+          id: 97,
+          title: "データ可視化技術",
+          content:
+            "データ可視化は、グラフィカル表現を通じて洞察を伝達します。チャートとグラフは、パターンとトレンドを理解しやすくします。色の選択は、可視化の可読性とアクセシビリティに影響します。インタラクティブな可視化は、複雑なデータセットの探索を可能にします。ダッシュボードデザインは、包括的なモニタリングのために複数の可視化を集約します。データストーリーテリングは、分析ナラティブを通じて聴衆を導きます。",
+          language: "ja",
+        },
+        {
+          id: 98,
+          title: "レスポンシブWebデザイン",
+          content:
+            "レスポンシブデザインは、ウェブサイトが様々な画面サイズに適応することを保証します。メディアクエリは、デバイス特性に基づいて異なるスタイルを適用します。フレキシブルグリッドは、レイアウト比率に相対単位を使用します。レスポンシブ画像は、最適な表示のためにサイズと解像度を調整します。モバイルファーストデザインは、小さな画面から始まり、より大きなディスプレイに向けて徐々に強化されます。デバイス間のテストは、実際の条件下でレスポンシブ動作を検証します。",
+          language: "ja",
+        },
+        {
+          id: 99,
+          title: "GraphQL入門",
+          content:
+            "GraphQLは、APIのための柔軟なクエリ言語を提供します。クライアントは、必要なデータを正確に要求し、オーバーフェッチングを回避します。スキーマ定義言語は、利用可能なタイプと操作を説明します。クエリはデータを取得し、ミューテーションはサーバー側の状態を変更します。リゾルバは、スキーマフィールドをデータソースに接続します。GraphQLサブスクリプションは、WebSocket接続を通じてリアルタイム更新を可能にします。",
+          language: "ja",
+        },
+        {
+          id: 100,
+          title: "ソフトウェアテストの種類",
+          content:
+            "異なるテストタイプは、ソフトウェア品質の様々な側面を検証します。機能テストは、機能が仕様通りに動作することを検証します。パフォーマンステストは、負荷条件下でのシステム動作を測定します。セキュリティテストは、悪用される可能性のある脆弱性を特定します。ユーザビリティテストは、ユーザーが目標をどれだけ簡単に達成できるかを評価します。回帰テストは、新しい変更が既存の機能を破損しないことを保証します。",
+          language: "ja",
+        },
+      ];
+
+      // Intl.Segmenter tokenizer for multi-language support
+      const segmenter = new Intl.Segmenter(["en", "zh", "ja"], {
+        granularity: "word",
+      });
+
+      function tokenize(text) {
+        const segments = segmenter.segment(text);
+        const tokens = [];
+        for (const segment of segments) {
+          if (segment.isWordLike) {
+            tokens.push(segment.segment.toLowerCase());
+          }
+        }
+        return tokens;
+      }
+
+      // Initialize MiniSearch
+      const miniSearch = new MiniSearch({
+        fields: ["title", "content"],
+        storeFields: ["title", "content", "language"],
+        searchOptions: {
+          fuzzy: 0.2,
+          prefix: true,
+          combineWith: "OR",
+          tokenize,
+        },
+        tokenize,
+      });
+      miniSearch.addAll(documents);
+
+      // Initialize FlexSearch with custom tokenizer
+      const flexSearch = new FlexSearch.Document({
+        document: {
+          id: "id",
+          index: [
+            { field: "title", tag: "title" },
+            { field: "content", tag: "content" },
+          ],
+          store: ["title", "content", "language"],
+        },
+        // tokenize: "tolerant", // tolerate missing 1 char, can't search as I type
+        tokenize: "forward",
+        /**
+         * - fuzzy (with "tokenize: forward"): doesn't work, shows no
+         *   result.
+         * - "successful" with only content matches: OK
+         * - prioritize CJK title matches: OK
+         * - "api 設計": cannot find docs that have "api" in title and "設
+         *   計" in content or vice versa. less relevant docs with only one
+         *   word matches: can't find any.
+         */
+        encode: tokenize,
+        /**
+         * - fuzzy (with "tokenize: forward"): doesn't work, shows many
+         *   irrelevant results.
+         * - "successful" with only content matches: doesn't work, shows
+         *   many irrelevant results.
+         * - prioritize CJK title matches: OK
+         * - "api 設計": cannot find docs that have "api" in title and "設
+         *   計" in content or vice versa. less relevant docs with only one
+         *   word matches: only finds one doc that only matches "設計" in
+         *   content, while minisearch find many more.
+         */
+        // encode: FlexSearch.Charset.CJK,
+        /**
+         * - fuzzy (with "tokenize: forward"): "sucesful" OK, "succesfl"
+         *   FAIL
+         * - "successful" with only content match: OK
+         * - prioritize CJK title matches: FAIL
+         */
+        // encode: FlexSearch.Charset.LatinBalance,
+        resolution: 9,
+      });
+
+      documents.forEach((doc) => {
+        flexSearch.add(doc);
+      });
+
+      // Search function
+      function highlightText(text, terms) {
+        if (terms.length === 0) return text;
+
+        // const terms = query
+        //   .toLowerCase()
+        //   .split(/\s+/)
+        //   .filter((t) => t.length > 0);
+        let result = text;
+
+        terms.forEach((term) => {
+          const regex = new RegExp(`(${escapeRegex(term)})`, "gi");
+          result = result.replace(regex, "<mark>$1</mark>");
+        });
+
+        return result;
+      }
+
+      function escapeRegex(string) {
+        return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      }
+
+      function performSearch(query) {
+        if (!query.trim()) {
+          document.getElementById("minisearchResults").innerHTML =
+            '<div class="no-results">Enter a search query</div>';
+          document.getElementById("flexsearchResults").innerHTML =
+            '<div class="no-results">Enter a search query</div>';
+          document.getElementById("stats").textContent =
+            `Total documents: ${documents.length}`;
+          document.getElementById("minisearchTiming").textContent = "";
+          document.getElementById("flexsearchTiming").textContent = "";
+          return;
+        }
+
+        // MiniSearch
+        const miniStart = performance.now();
+        const miniResults = miniSearch.search(query);
+        const miniEnd = performance.now();
+
+        console.log(miniResults);
+
+        // FlexSearch
+        const flexStart = performance.now();
+        const flexRawResults = flexSearch.search(query, {
+          highlight: "<match>$1</match>",
+        });
+        const flexEnd = performance.now();
+
+        console.log(flexRawResults);
+
+        // Process FlexSearch results
+        const flexResults = [];
+        const seenIds = new Set();
+
+        flexRawResults.forEach((fieldResult) => {
+          if (fieldResult.result) {
+            fieldResult.result.forEach((item) => {
+              const itemId = typeof item === "number" ? item : item.id;
+              if (!seenIds.has(itemId)) {
+                seenIds.add(itemId);
+                const doc = documents.find((d) => d.id === itemId);
+                if (doc) {
+                  flexResults.push({
+                    id: itemId,
+                    ...doc,
+                    score: 1, // FlexSearch doesn't provide scores in the same way
+                  });
+                }
+              }
+            });
+          }
+        });
+
+        // Update stats
+        document.getElementById("stats").textContent =
+          `Total documents: ${documents.length} | Query: "${query}"`;
+
+        document.getElementById("minisearchTiming").textContent =
+          `Search time: ${(miniEnd - miniStart).toFixed(2)}ms | Results: ${miniResults.length}`;
+
+        document.getElementById("flexsearchTiming").textContent =
+          `Search time: ${(flexEnd - flexStart).toFixed(2)}ms | Results: ${flexResults.length}`;
+
+        // Render MiniSearch results
+        const miniHtml =
+          miniResults.length > 0
+            ? miniResults
+                .map(
+                  (result) => `
+                    <div class="result-item minisearch">
+                        <div class="result-id">ID: ${result.id} | Lang: ${result.language}</div>
+                        <div class="result-title">${highlightText(result.title, result.terms)}</div>
+                        <div class="result-content">${highlightText(result.content.substring(0, 200) + "...", result.terms)}</div>
+                        <div class="result-score">Score: ${result.score.toFixed(4)}</div>
+                    </div>
+                `,
+                )
+                .join("")
+            : '<div class="no-results">No results found</div>';
+
+        document.getElementById("minisearchResults").innerHTML = miniHtml;
+
+        // Render FlexSearch results
+        const flexHtml =
+          flexResults.length > 0
+            ? flexResults
+                .slice(0, 20)
+                .map(
+                  (result) => `
+                    <div class="result-item flexsearch">
+                        <div class="result-id">ID: ${result.id} | Lang: ${result.language}</div>
+                        <div class="result-title">${highlightText(result.title, [query])}</div>
+                        <div class="result-content">${highlightText(result.content.substring(0, 200) + "...", [query])}</div>
+                    </div>
+                `,
+                )
+                .join("")
+            : '<div class="no-results">No results found</div>';
+
+        document.getElementById("flexsearchResults").innerHTML = flexHtml;
+      }
+
+      // Event listener
+      const searchInput = document.getElementById("searchInput");
+      searchInput.addEventListener("input", (e) => {
+        performSearch(e.target.value);
+      });
+
+      // Initial state
+      performSearch("");
+    </script>
+  </body>
+</html>
